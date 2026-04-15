@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 每日 5 个英语单词 — 2026-04-14</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #818cf8;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding: 24px 0;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    header .date {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .word-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin-bottom: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .word-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(79,70,229,0.15);
+    }
+
+    .word-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .word-num {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .word-main {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .word-pos {
+      color: var(--primary-light);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 2px 10px;
+      background: rgba(79,70,229,0.12);
+      border-radius: 20px;
+      margin-left: 4px;
+    }
+
+    .ipa-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .ipa {
+      font-family: 'Lucida Sans Unicode', 'Segoe UI Symbol', sans-serif;
+      font-size: 1.15rem;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-speak-word {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-speak-word:hover { background: rgba(79,70,229,0.15); color: var(--primary-light); border-color: var(--primary); }
+    .btn-speak-word.speaking { animation: pulse 1.2s infinite; border-color: var(--success); color: var(--success); }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      margin-top: 16px;
+    }
+    .section-label:first-of-type { margin-top: 0; }
+
+    .pronunciation-note {
+      background: rgba(245,158,11,0.08);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 10px 10px 0;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+    }
+
+    .meaning {
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .example-box {
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 8px;
+    }
+
+    .example-en {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+      padding-right: 44px;
+    }
+
+    .example-zh {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    .btn-speak-sentence {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      background: linear-gradient(135deg, var(--primary), #6366f1);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      font-family: inherit;
+      flex-shrink: 0;
+    }
+
+    .btn-speak-sentence:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 16px rgba(79,70,229,0.4);
+    }
+
+    .btn-speak-sentence.speaking {
+      animation: pulse 1.2s infinite;
+      box-shadow: 0 4px 20px rgba(16,185,129,0.4);
+    }
+
+    .mnemonic {
+      background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(79,70,229,0.06));
+      border: 1px solid rgba(16,185,129,0.18);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #a7f3d0;
+    }
+
+    .mnemonic::before {
+      content: "💡 ";
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .play-icon { display: inline-block; width: 14px; height: 14px; }
+    .stop-icon { display: none; width: 12px; height: 12px; }
+    .speaking .play-icon { display: none; }
+    .speaking .stop-icon { display: inline-block; }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      body { padding: 16px 12px; }
+      .word-card { padding: 22px 18px; }
+      .word-main { font-size: 1.35rem; }
+      .example-en { padding-right: 42px; font-size: 0.95rem; }
+      header h1 { font-size: 1.45rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>📚 每日英语单词</h1>
+  <div class="date">2026 年 4 月 14 日 · 星期二</div>
+</header>
+
+<!-- Word 1 -->
+<article class="word-card">
+  <div class="word-header">
+    <span class="word-num">1</span>
+    <span class="word-main">acknowledge</span>
+    <span class="word-pos">动词</span>
+  </div>
+  <div class="ipa-row">
+    <span class="ipa">/əkˈnɒlɪdʒ/</span>
+    <button class="btn-speak-word" onclick="speak('acknowledge', this)" title="朗读单词">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+      <svg class="stop-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+      单词发音
+    </button>
+  </div>
+  
+  <div class="section-label">🗣 发音说明</div>
+  <div class="pronunciation-note">
+    重音在第二音节 <strong>"knol"</strong>，读作"额克-<strong>诺</strong>-利奇"。注意开头的 "ack" 不是"阿克"，是弱化的"额克"。很多人会错把重音放在第一节，要特别注意。
+  </div>
+  
+  <div class="section-label">📖 词义</div>
+  <div class="meaning">承认；确认收到；感谢</div>
+  
+  <div class="section-label">💬 例句</div>
+  <div class="example-box">
+    <button class="btn-speak-sentence" onclick="speakSentence('She acknowledged the email within minutes of receiving it.', this)" title="播放例句">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+      <svg class="stop-icon" viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+    </button>
+    <div class="example-en">She acknowledged the email within minutes of receiving it.</div>
+    <div class="example-zh">她在收到邮件几分钟内就回复确认了。</div>
+  </div>
+  
+  <div class="section-label">🧠 记忆提示</div>
+  <div class="mnemonic">ack（确认信号）+ knowledge（知识）→ 确认你知道了 → "承认/确认"</div>
+</article>
+
+<!-- Word 2 -->
+<article class="word-card">
+  <div class="word-header">
+    <span class="word-num">2</span>
+    <span class="word-main">crucial</span>
+    <span class="word-pos">形容词</span>
+  </div>
+  <div class="ipa-row">
+    <span class="ipa">/ˈkruːʃəl/</span>
+    <button class="btn-speak-word" onclick="speak('crucial', this)" title="朗读单词">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+      <svg class="stop-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+      单词发音
+    </button>
+  </div>
+  
+  <div class="section-label">🗣 发音说明</div>
+  <div class="pronunciation-note">
+    重音在第一音节，读作"<strong>克鲁</strong>-shul"。"cru" 发长音 /uː/，类似中文"鲁"；结尾 "-cial" 读"shul"，不要读成"shee-al"。
+  </div>
+  
+  <div class="section-label">📖 词义</div>
+  <div class="meaning">至关重要的；决定性的</div>
+  
+  <div class="section-label">💬 例句</div>
+  <div class="example-box">
+    <button class="btn-speak-sentence" onclick="speakSentence('Getting enough sleep is crucial for maintaining good health.', this)" title="播放例句">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+      <svg class="stop-icon" viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+    </button>
+    <div class="example-en">Getting enough sleep is crucial for maintaining good health.</div>
+    <div class="example-zh">保证充足睡眠对维持健康至关重要。</div>
+  </div>
+  
+  <div class="section-label">🧠 记忆提示</div>
+  <div class="mnemonic">与 cross（十字）同根 → 十字路口是关键节点 → 至关重要</div>
+</article>
+
+<!-- Word 3 -->
+<article class="word-card">
+  <div class="word-header">
+    <span class="word-num">3</span>
+    <span class="word-main">flexible</span>
+    <span class="word-pos">形容词</span>
+  </div>
+  <div class="ipa-row">
+    <span class="ipa">/ˈfleksɪbl/</span>
+    <button class="btn-speak-word" onclick="speak('flexible', this)" title="朗读单词">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+      <svg class="stop-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+      单词发音
+    </button>
+  </div>
+  
+  <div class="section-label">🗣 发音说明</div>
+  <div class="pronunciation-note">
+    重音在第一音节，读作"<strong>flek</strong>-si-bul"。注意 "-xible" 不读"zi-bul"，x 发 /ks/ 音，中间的 i 读短促的"西"。整体节奏：<strong>flek</strong>-sə-bəl。
+  </div>
+  
+  <div class="section-label">📖 词义</div>
+  <div class="meaning">灵活的；可弯曲的；变通的</div>
+  
+  <div class="section-label">💬 例句</div>
+  <div class="example-box">
+    <button class="btn-speak-sentence" onclick=\"speakSentence('Our company offers flexible working hours to help employees maintain work-life balance.', this)\" title=\"播放例句\">
+      <svg class=\"play-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:16px;height:16px\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"/><path d=\"M15.54 8.46a5 5 0 010 7.07\"/></svg>
+      <svg class=\"stop-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:14px;height:14px\"><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1\"/></svg>
+    </button>
+    <div class=\"example-en\">Our company offers flexible working hours to help employees maintain work-life balance.</div>
+    <div class=\"example-zh\">我们公司提供弹性工作时间，帮助员工维持工作与生活的平衡。</div>
+  </div>
+  
+  <div class=\"section-label\">🧠 记忆提示</div>
+  <div class=\"mnemonic\">flex（弯曲，健身"练肌肉"也叫 flex）→ 能弯曲就是灵活</div>
+</article>
+
+<!-- Word 4 -->
+<article class=\"word-card\">
+  <div class=\"word-header\">
+    <span class=\"word-num\">4</span>
+    <span class=\"word-main\">genuine</span>
+    <span class=\"word-pos\">形容词</span>
+  </div>
+  <div class=\"ipa-row\">
+    <span class=\"ipa\">/ˈdʒenjuɪn/</span>
+    <button class=\"btn-speak-word\" onclick=\"speak('genuine', this)\" title=\"朗读单词\">
+      <svg class=\"play-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"/><path d=\"M15.54 8.46a5 5 0 010 7.07\"/></svg>
+      <svg class=\"stop-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1\"/></svg>
+      单词发音
+    </button>
+  </div>
+  
+  <div class=\"section-label\">🗣 发音说明</div>
+  <div class=\"pronunciation-note\">
+    重音在第一音节，读作"<strong>jeh</strong>-nyoo-in"。很多人把结尾的 "-ine" 读成"ain"（像 fine），但这里应读成弱化的"in"。开头 "gen" 类似"正"的声母加"嗯"。
+  </div>
+  
+  <div class=\"section-label\">📖 词义</div>
+  <div class=\"meaning\">真实的；真诚的；非伪造的</div>
+  
+  <div class=\"section-label\">💬 例句</div>
+  <div class=\"example-box\">
+    <button class=\"btn-speak-sentence\" onclick=\"speakSentence('His apology sounded genuine, so I decided to forgive him.', this)\" title=\"播放例句\">
+      <svg class=\"play-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:16px;height:16px\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"/><path d=\"M15.54 8.46a5 5 0 010 7.07\"/></svg>
+      <svg class=\"stop-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:14px;height:14px\"><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1\"/></svg>
+    </button>
+    <div class=\"example-en\">His apology sounded genuine, so I decided to forgive him.</div>
+    <div class=\"example-zh\">他的道歉听起来很真诚，所以我决定原谅他。</div>
+  </div>
+  
+  <div class=\"section-label\">🧠 记忆提示</div>
+  <div class=\"mnemonic\">gene（基因）是最本真的东西 → genuine = 真实的</div>
+</article>
+
+<!-- Word 5 -->
+<article class=\"word-card\">
+  <div class=\"word-header\">
+    <span class=\"word-num\">5</span>
+    <span class=\"word-main\">delegate</span>
+    <span class=\"word-pos\">动 / 名词</span>
+  </div>
+  <div class=\"ipa-row\">
+    <span class=\"ipa\">/ˈdelɪɡeɪt/</span>
+    <button class=\"btn-speak-word\" onclick=\"speak('delegate', this)\" title=\"朗读单词\">
+      <svg class=\"play-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"/><path d=\"M15.54 8.46a5 5 0 010 7.07\"/></svg>
+      <svg class=\"stop-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1\"/></svg>
+      单词发音
+    </button>
+  </div>
+  
+  <div class=\"section-label\">🗣 发音说明</div>
+  <div class=\"pronunciation-note\">
+    作动词时重音在第一音节："<strong>del</strong>-i-gate"，结尾 "-gate" 读"geɪt"像"盖特"。中间 "-li-" 是轻读的"利"，不要重读。
+  </div>
+  
+  <div class=\"section-label\">📖 词义</div>
+  <div class=\"meaning\">（动）委派，授权；（名）代表，委托人</div>
+  
+  <div class=\"section-label\">💬 例句</div>
+  <div class=\"example-box\">
+    <button class=\"btn-speak-sentence\" onclick=\"speakSentence('A good manager knows how to delegate tasks effectively to their team.', this)\" title=\"播放例句\">
+      <svg class=\"play-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:16px;height:16px\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"/><path d=\"M15.54 8.46a5 5 0 010 7.07\"/></svg>
+      <svg class=\"stop-icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"width:14px;height:14px\"><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1\"/></svg>
+    </button>
+    <div class=\"example-en\">A good manager knows how to delegate tasks effectively to their team.</div>
+    <div class=\"example-zh\">一个好的管理者懂得如何有效地将任务分配给团队。</div>
+  </div>
+  
+  <div class=\"section-label\">🧠 记忆提示</div>
+  <div class=\"mnemonic\">dele（删去，排版术语）+ gate（门）→ 把任务"送出门"给别人 → 委派</div>
+</article>
+
+<footer>
+  ✨ 点击 🔊 按钮即可听读音 · 明天继续学习新单词
+</footer>
+
+</div>
+
+<script>
+// 当前正在朗读的对象引用
+let currentUtterance = null;
+
+function speak(text, btnEl) {
+  if (currentUtterance && speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+    document.querySelectorAll('.speaking').forEach(function(el){ el.classList.remove('speaking'); });
+    return;
+  }
+  
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US';
+  u.rate = 0.82;
+  u.pitch = 1;
+  u.volume = 1;
+  
+  u.onstart = function() { btnEl.classList.add('speaking'); };
+  u.onend   = function() { btnEl.classList.remove('speaking'); };
+  u.onerror  = function() { btnEl.classList.remove('speaking'); };
+  
+  currentUtterance = u;
+  speechSynthesis.speak(u);
+}
+
+function speakSentence(text, btnEl) {
+  speak(text, btnEl);
+}
+</script>
+
+</body>
+</html>
