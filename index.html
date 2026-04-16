@@ -1,211 +1,475 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日5个英语单词 · 2026-04-15</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语单词 · April 16, 2026</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d1117; color: #e6edf3; min-height: 100vh; padding: 2rem 1rem; }
-    .container { max-width: 720px; margin: 0 auto; }
-    header { text-align: center; margin-bottom: 2rem; }
-    header h1 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #58a6ff, #a371f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.4rem; }
-    header .date { color: #8b949e; font-size: 0.95rem; }
-    .word-card { background: #161b22; border: 1px solid #30363d; border-radius: 14px; padding: 1.6rem; margin-bottom: 1.4rem; transition: transform 0.2s, box-shadow 0.2s; }
-    .word-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(88, 166, 255, 0.1); }
-    .word-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
-    .word-en { font-size: 1.9rem; font-weight: 800; color: #79c0ff; }
-    .pos { font-size: 0.8rem; background: #1f6feb22; color: #79c0ff; border: 1px solid #1f6feb55; padding: 2px 10px; border-radius: 20px; }
-    .ipa { font-size: 1rem; color: #8b949e; font-family: 'Georgia', serif; }
-    .sound-note { font-size: 0.88rem; color: #d2a8ff; background: #d2a8ff12; border-left: 3px solid #a371f7; padding: 0.5rem 0.8rem; border-radius: 0 8px 8px 0; margin: 0.6rem 0; }
-    .meaning { font-size: 1.05rem; color: #f0883e; margin-bottom: 0.9rem; font-weight: 500; }
-    .example-block { background: #0d1117; border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 0.5rem; }
-    .example-label { font-size: 0.75rem; color: #8b949e; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .example-en { font-size: 0.95rem; color: #e6edf3; line-height: 1.6; display: flex; align-items: flex-start; gap: 0.5rem; }
-    .example-cn { font-size: 0.85rem; color: #8b949e; margin-top: 0.4rem; line-height: 1.5; }
-    .tip { font-size: 0.85rem; color: #56d364; background: #56d36412; border-left: 3px solid #3fb950; padding: 0.5rem 0.8rem; border-radius: 0 8px 8px 0; margin-top: 0.8rem; }
-    .tip::before { content: '💡 '; }
-    .btn-speak { background: none; border: 1px solid #30363d; border-radius: 6px; padding: 2px 8px; cursor: pointer; font-size: 1rem; transition: background 0.2s; flex-shrink: 0; }
-    .btn-speak:hover { background: #21262d; }
-    footer { text-align: center; color: #484f58; font-size: 0.8rem; margin-top: 2rem; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f1117;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: 0.02em;
+    }
+    header .date {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    header .badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 14px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+
+    .cards {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .card {
+      background: #1e2130;
+      border: 1px solid #2d3148;
+      border-radius: 16px;
+      padding: 28px 28px 24px;
+      position: relative;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(99,102,241,0.15);
+    }
+
+    .card-number {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #2d3148;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .word-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .word {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #a5b4fc;
+      letter-spacing: 0.01em;
+    }
+    .pos {
+      font-size: 0.82rem;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: #2d3148;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+    .ipa {
+      font-size: 1rem;
+      color: #7dd3fc;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .speak-btn {
+      background: none;
+      border: 1.5px solid #4f46e5;
+      color: #a5b4fc;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, color 0.15s;
+      flex-shrink: 0;
+    }
+    .speak-btn:hover {
+      background: #4f46e5;
+      color: #fff;
+    }
+    .speak-btn.small {
+      width: 26px;
+      height: 26px;
+      font-size: 0.82rem;
+      border-color: #334155;
+      color: #64748b;
+    }
+    .speak-btn.small:hover {
+      background: #334155;
+      color: #a5b4fc;
+    }
+
+    .section {
+      margin-top: 16px;
+    }
+    .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      margin-bottom: 5px;
+    }
+
+    .pronunciation-box {
+      background: #161b2e;
+      border-left: 3px solid #6366f1;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .meaning {
+      font-size: 1.1rem;
+      color: #f1f5f9;
+      font-weight: 500;
+    }
+
+    .example-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .example-block:last-child { margin-bottom: 0; }
+    .example-text-wrap { flex: 1; }
+    .example-en {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+    .example-zh {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .tip-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #1a2235;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-top: 14px;
+    }
+    .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .tip-text { font-size: 0.88rem; color: #94a3b8; line-height: 1.6; }
+
+    footer {
+      text-align: center;
+      margin-top: 44px;
+      font-size: 0.8rem;
+      color: #334155;
+    }
+    footer a { color: #6366f1; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>📚 每日 5 个英语单词</h1>
-      <div class="date">2026 年 4 月 15 日 · 第 2 期</div>
-    </header>
 
-    <!-- Word 1 -->
-    <div class="word-card">
-      <div class="word-header">
-        <span class="word-en">leverage</span>
-        <span class="pos">v. / n.</span>
-        <span class="ipa">/ˈlev.ər.ɪdʒ/</span>
-      </div>
-      <div class="sound-note">重音在第一音节「LEV」，er 读作短元音 /ər/，age 尾音 /ɪdʒ/ 近似"瑞奇"。整体节奏：勒-维-瑞奇。</div>
-      <div class="meaning">中文词义：利用；杠杆作用；影响力</div>
+<header>
+  <h1>📖 每日英语单词</h1>
+  <p class="date">April 16, 2026 · 第 3 期</p>
+  <span class="badge">生活 &amp; 职场高频词</span>
+</header>
 
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('We should leverage our existing network to find new clients.')">🔊</button>
-          We should leverage our existing network to find new clients.
-        </div>
-        <div class="example-cn">我们应该利用现有的关系网络来开发新客户。</div>
-      </div>
+<div class="cards">
 
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('The new policy gives us more leverage in negotiations.')">🔊</button>
-          The new policy gives us more leverage in negotiations.
-        </div>
-        <div class="example-cn">新政策让我们在谈判中拥有更多筹码。</div>
-      </div>
+  <!-- ───────── Word 1: resilient ───────── -->
+  <div class="card">
+    <div class="card-number">01</div>
 
-      <div class="tip">联想：leverage = lever（杠杆）+ age → 用"杠杆"撬动资源。职场中"利用自身优势"就是 leverage your strength。</div>
+    <div class="word-row">
+      <span class="word">resilient</span>
+      <span class="pos">adj.</span>
+      <span class="ipa">/rɪˈzɪliənt/</span>
+      <button class="speak-btn" onclick="speak('resilient')" title="朗读单词">🔊</button>
     </div>
 
-    <!-- Word 2 -->
-    <div class="word-card">
-      <div class="word-header">
-        <span class="word-en">onboard</span>
-        <span class="pos">v.</span>
-        <span class="ipa">/ˌɒnˈbɔːrd/</span>
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-box">
+        重音在第二音节 <strong>ZIL</strong>，读作 <em>ri-ZIL-ee-ənt</em>。<br>
+        首字母 <strong>re-</strong> 轻读，类似中文"瑞"的弱化音；<strong>-ient</strong> 结尾合读为"ənt"，不要一字一顿。易错：把重音放在第一或第三音节。
       </div>
-      <div class="sound-note">重音在第二音节 on-BOARD，on 读作 /ɒn/（短 O 音），board 发 /bɔːrd/。注意不是"on board"两个词分开读，而是连读的动词形式。</div>
-      <div class="meaning">中文词义：（新员工）入职培训；使……熟悉业务；使加入</div>
-
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('It is my job to onboard new hires and get them up to speed.')">🔊</button>
-          It is my job to onboard new hires and get them up to speed.
-        </div>
-        <div class="example-cn">我的职责是负责新员工的入职培训，让他们尽快上手。</div>
-      </div>
-
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('We need to onboard new partners before the product launch.')">🔊</button>
-          We need to onboard new partners before the product launch.
-        </div>
-        <div class="example-cn">产品上线前，我们需要让新的合作伙伴尽快熟悉流程。</div>
-      </div>
-
-      <div class="tip">联想：on + board（上船/上车）→ 带你"上船"，引申为让新人入职、引进入门。IT行业的"配置新账号"也叫 onboard。</div>
     </div>
 
-    <!-- Word 3 -->
-    <div class="word-card">
-      <div class="word-header">
-        <span class="word-en">stakeholder</span>
-        <span class="pos">n.</span>
-        <span class="ipa">/ˈsteɪk.hoʊl.dɚ/</span>
-      </div>
-      <div class="sound-note">三个音节 stake-HOLD-er，重音在第一音节。stake 读作 /steɪk/，hold 中 O 读作 /oʊ/，er 读作 /ɚ/（卷舌）。注意不要把中间的 -hold 读成单独的 hold。</div>
-      <div class="meaning">中文词义：利益相关者；持份者；相关方</div>
-
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('We need to keep all stakeholders informed about the project timeline.')">🔊</button>
-          We need to keep all stakeholders informed about the project timeline.
-        </div>
-        <div class="example-cn">我们需要让所有相关方及时了解项目进度。</div>
-      </div>
-
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('The decision requires approval from key stakeholders.')">🔊</button>
-          The decision requires approval from key stakeholders.
-        </div>
-        <div class="example-cn">这个决定需要关键利益相关者的批准。</div>
-      </div>
-
-      <div class="tip">联想：stake（赌注/利益）+ holder（持有者）→ "利益持有者"，即与项目/公司有利害关系的各方。股东、客户、合作伙伴都是 stakeholders。</div>
+    <div class="section">
+      <div class="label">词义</div>
+      <div class="meaning">有韧性的；能快速恢复的；适应力强的</div>
     </div>
 
-    <!-- Word 4 -->
-    <div class="word-card">
-      <div class="word-header">
-        <span class="word-en">prioritize</span>
-        <span class="pos">v.</span>
-        <span class="ipa">/praɪˈɔːr.ɪ.taɪz/</span>
-      </div>
-      <div class="sound-note">重音在第二音节 pri-OR-i-，tize 读作 /taɪz/（类似"泰兹"），不要读成"追斯"。整体：普瑞-欧-瑞-泰兹。</div>
-      <div class="meaning">中文词义：优先处理；划分优先级；按重要程度排序</div>
-
+    <div class="section">
+      <div class="label">例句</div>
       <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('We need to prioritize tasks based on their urgency and impact.')">🔊</button>
-          We need to prioritize tasks based on their urgency and impact.
+        <button class="speak-btn small" onclick="speak('She remained resilient despite facing multiple setbacks at work.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">She remained resilient despite facing multiple setbacks at work.</div>
+          <div class="example-zh">尽管在工作中屡遭挫折，她依然保持了很强的韧性。</div>
         </div>
-        <div class="example-cn">我们需要根据紧急程度和影响力来安排任务的优先级。</div>
       </div>
-
       <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('Start by prioritizing your health over work deadlines.')">🔊</button>
-          Start by prioritizing your health over work deadlines.
+        <button class="speak-btn small" onclick="speak('Children are often more resilient than adults give them credit for.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">Children are often more resilient than adults give them credit for.</div>
+          <div class="example-zh">孩子们往往比大人认为的更具有适应力。</div>
         </div>
-        <div class="example-cn">先把健康排在工作截止日期之前。</div>
       </div>
-
-      <div class="tip">词根：prior（优先的）+ -itize（动词后缀）→ 使之成为优先项。注意拼写是 -ize，不是 -ise。生活中用它表示"先做重要的事"。</div>
     </div>
 
-    <!-- Word 5 -->
-    <div class="word-card">
-      <div class="word-header">
-        <span class="word-en">transparent</span>
-        <span class="pos">adj.</span>
-        <span class="ipa">/trænsˈpær.ənt/</span>
-      </div>
-      <div class="sound-note">重音在第二音节 spares-，par 读作 /pær/（类似"啪"），ent 读作 /ənt/。前面 trans- 读作 /træns/，整体节奏：穿斯-啪-润特。</div>
-      <div class="meaning">中文词义：透明的；公开的；显而易见的</div>
-
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('Our company culture is built on transparent communication.')">🔊</button>
-          Our company culture is built on transparent communication.
-        </div>
-        <div class="example-cn">我们公司的文化建立在透明沟通的基础上。</div>
-      </div>
-
-      <div class="example-block">
-        <div class="example-label">例句</div>
-        <div class="example-en">
-          <button class="btn-speak" onclick="speak('Please be transparent about any challenges you are facing.')">🔊</button>
-          Please be transparent about any challenges you are facing.
-        </div>
-        <div class="example-cn">请坦诚地说明你遇到的困难。</div>
-      </div>
-
-      <div class="tip">本意是"透明的"，引申为"坦诚公开的"。商业中常说 transparent pricing（透明定价），人际中表示"坦诚不隐瞒"。与 opposite（相反）和 transport（运输）有相同的词根 trans-（穿越、跨越）。</div>
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text">联想词根：<em>re-</em>（再次）+ <em>sil</em>（弹跳，与 spring 同源）→ "弹回来" = 韧性。想象弹力球摔地后迅速弹起，就是 resilient 的感觉。</span>
     </div>
-
-    <footer>
-      每期更新 · <a href="https://no8excuse.github.io/daily-words/" style="color:#58a6ff;text-decoration:none;">no8excuse.github.io/daily-words</a>
-    </footer>
   </div>
 
-  <script>
-    function speak(text) {
-      if (!window.speechSynthesis) { alert('您的浏览器不支持语音合成'); return; }
-      const utt = new SpeechSynthesisUtterance(text);
-      utt.lang = 'en-US';
-      utt.rate = 0.9;
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utt);
+  <!-- ───────── Word 2: negotiate ───────── -->
+  <div class="card">
+    <div class="card-number">02</div>
+
+    <div class="word-row">
+      <span class="word">negotiate</span>
+      <span class="pos">v.</span>
+      <span class="ipa">/nɪˈɡoʊʃieɪt/</span>
+      <button class="speak-btn" onclick="speak('negotiate')" title="朗读单词">🔊</button>
+    </div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-box">
+        重音在第二音节 <strong>GO</strong>，读 <em>ni-GOH-shee-ayt</em>。<br>
+        中间的 <strong>-tia-</strong> 合读为 "shee"，不要念成"ti-a"。<strong>-ate</strong> 结尾读"eɪt"（类似"诶特"）。常见错误：把"tiate"逐字发音。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">词义</div>
+      <div class="meaning">谈判；协商；交涉</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('We need to negotiate the contract terms before signing.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">We need to negotiate the contract terms before signing.</div>
+          <div class="example-zh">我们在签署合同之前需要协商合同条款。</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('He successfully negotiated a higher salary during his job offer.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">He successfully negotiated a higher salary during his job offer.</div>
+          <div class="example-zh">他在收到工作邀请时成功谈到了更高的薪水。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text">职场必备词！记忆技巧：<em>nego</em>（拉丁语"否定"）→ 双方都在否定对方的要价，最终达成共识。名词形式 <strong>negotiation</strong>，形容词 <strong>negotiable</strong>（可商量的）都很常用。</span>
+    </div>
+  </div>
+
+  <!-- ───────── Word 3: efficient ───────── -->
+  <div class="card">
+    <div class="card-number">03</div>
+
+    <div class="word-row">
+      <span class="word">efficient</span>
+      <span class="pos">adj.</span>
+      <span class="ipa">/ɪˈfɪʃənt/</span>
+      <button class="speak-btn" onclick="speak('efficient')" title="朗读单词">🔊</button>
+    </div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-box">
+        重音在第二音节 <strong>FI</strong>，读 <em>i-FI-shənt</em>。<br>
+        <strong>-cient</strong> 整体读"shənt"（类似"晒恩特"快读），不要读"si-ent"。首字母 <em>e-</em> 轻读如"i"。与 effective（有效的）区分：efficient 强调高效率、低消耗。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">词义</div>
+      <div class="meaning">高效的；效率高的；有能力的</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('Using a to-do list makes your workday much more efficient.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">Using a to-do list makes your workday much more efficient.</div>
+          <div class="example-zh">使用待办清单能让你的工作日效率大幅提升。</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('She is one of the most efficient managers in the company.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">She is one of the most efficient managers in the company.</div>
+          <div class="example-zh">她是公司里效率最高的经理之一。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text">词根记忆：<em>ef-</em>（向外）+ <em>fici</em>（做，same root as "factory"）+ <em>-ent</em> → 把事情做出来的能力 = 高效。副词 <strong>efficiently</strong>、名词 <strong>efficiency</strong> 都是职场写作常见词。</span>
+    </div>
+  </div>
+
+  <!-- ───────── Word 4: collaborate ───────── -->
+  <div class="card">
+    <div class="card-number">04</div>
+
+    <div class="word-row">
+      <span class="word">collaborate</span>
+      <span class="pos">v.</span>
+      <span class="ipa">/kəˈlæbəreɪt/</span>
+      <button class="speak-btn" onclick="speak('collaborate')" title="朗读单词">🔊</button>
+    </div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-box">
+        重音在第二音节 <strong>LAB</strong>，读 <em>kə-LAB-ə-reɪt</em>。<br>
+        首字母 <em>co-</em> 轻读如"kə"；<strong>-lab-</strong> 的"æ"是前开元音，类似中文"啊"但嘴角更向两侧拉开；结尾"-rate"读"reɪt"。注意不要重读第一个音节。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">词义</div>
+      <div class="meaning">合作；协作；共同完成</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('Our team collaborates closely with the design department on new projects.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">Our team collaborates closely with the design department on new projects.</div>
+          <div class="example-zh">我们团队在新项目上与设计部门紧密协作。</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('The two companies decided to collaborate on developing a new product.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">The two companies decided to collaborate on developing a new product.</div>
+          <div class="example-zh">两家公司决定合作开发一款新产品。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text">拆解记忆：<em>co-</em>（共同）+ <em>labor</em>（劳动，同"labour"）+ <em>-ate</em>（动词后缀）→ 共同劳动 = 协作。名词 <strong>collaboration</strong>，形容词 <strong>collaborative</strong> 在职场邮件、简历中超高频！</span>
+    </div>
+  </div>
+
+  <!-- ───────── Word 5: deadline ───────── -->
+  <div class="card">
+    <div class="card-number">05</div>
+
+    <div class="word-row">
+      <span class="word">deadline</span>
+      <span class="pos">n.</span>
+      <span class="ipa">/ˈdedlaɪn/</span>
+      <button class="speak-btn" onclick="speak('deadline')" title="朗读单词">🔊</button>
+    </div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-box">
+        重音在第一音节 <strong>DEAD</strong>，读 <em>DED-laɪn</em>。<br>
+        <strong>dead</strong> 中的"ea"读"ɛ"（短促的"诶"），不要读成"diːd"（deed）。<strong>-line</strong> 读"laɪn"（类似"莱恩"）。整体两个音节，干脆利落。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">词义</div>
+      <div class="meaning">截止日期；最后期限</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('The deadline for submitting the report is this Friday at 5 PM.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">The deadline for submitting the report is this Friday at 5 PM.</div>
+          <div class="example-zh">提交报告的截止日期是本周五下午5点。</div>
+        </div>
+      </div>
+      <div class="example-block">
+        <button class="speak-btn small" onclick="speak('I always try to finish tasks ahead of the deadline to avoid last-minute stress.')" title="朗读例句">🔊</button>
+        <div class="example-text-wrap">
+          <div class="example-en">I always try to finish tasks ahead of the deadline to avoid last-minute stress.</div>
+          <div class="example-zh">我总是尽量在截止日期前完成任务，以避免临时抱佛脚的压力。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <span class="tip-icon">💡</span>
+      <span class="tip-text">历史趣记：<em>deadline</em> 原指监狱中越过即被射杀的界线，"越过就死"！如今引申为"错过就完蛋"的截止期。常用搭配：<strong>meet a deadline</strong>（按时完成）、<strong>miss a deadline</strong>（错过截止日期）。</span>
+    </div>
+  </div>
+
+</div><!-- .cards -->
+
+<footer>
+  <p>每日英语单词 · 第 3 期 &nbsp;|&nbsp; <a href="https://no8excuse.github.io/daily-words/" target="_blank">在线查看历史</a></p>
+  <p style="margin-top:6px">点击 🔊 按钮即可朗读单词或例句（需浏览器支持 Web Speech API）</p>
+</footer>
+
+<script>
+  function speak(text) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音朗读功能');
+      return;
     }
-  </script>
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-US';
+    utter.rate = 0.9;
+    utter.pitch = 1;
+    window.speechSynthesis.speak(utter);
+  }
+</script>
+
 </body>
 </html>
