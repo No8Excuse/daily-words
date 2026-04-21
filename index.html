@@ -3,462 +3,347 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>每日英语单词 · 第7期</title>
+  <title>每日英语单词 — 2026年4月21日</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
       background: #0f1117;
       color: #e2e8f0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
       min-height: 100vh;
-      padding: 32px 16px 60px;
+      padding: 2rem 1rem;
     }
-
     header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 2.5rem;
     }
-
     header h1 {
       font-size: 2rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      background: linear-gradient(135deg, #667eea, #764ba2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 6px;
+      background-clip: text;
     }
-
     header p {
-      color: #94a3b8;
-      font-size: 0.9rem;
-      letter-spacing: 0.03em;
+      color: #718096;
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
     }
-
     .container {
-      max-width: 780px;
+      max-width: 800px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 1.8rem;
     }
-
     .card {
-      background: #1e2130;
-      border: 1px solid #2d3348;
+      background: #1a1d27;
+      border: 1px solid #2d3748;
       border-radius: 16px;
-      padding: 28px 30px;
-      transition: box-shadow 0.2s;
+      padding: 1.8rem 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
     .card:hover {
-      box-shadow: 0 6px 32px rgba(96, 165, 250, 0.12);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(102,126,234,0.15);
     }
-
-    .card-header {
+    .word-header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
+      gap: 1rem;
       flex-wrap: wrap;
+      margin-bottom: 1.2rem;
     }
-
-    .word-number {
-      background: linear-gradient(135deg, #3b5bdb, #7048e8);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      width: 28px;
-      height: 28px;
+    .word-num {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
       flex-shrink: 0;
     }
-
     .word-title {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: #f1f5f9;
-      letter-spacing: -0.01em;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #f7fafc;
+      letter-spacing: 0.03em;
     }
-
-    .pos-tag {
-      background: #2d3a5a;
-      color: #93c5fd;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      text-transform: lowercase;
+    .word-pos {
+      background: #2d3748;
+      color: #a0aec0;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
     }
-
     .speak-btn {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 1.3rem;
-      line-height: 1;
-      padding: 4px 6px;
-      border-radius: 8px;
-      transition: background 0.15s;
       margin-left: auto;
-    }
-
-    .speak-btn:hover { background: #2d3348; }
-
-    /* Rows */
-    .row {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 1rem;
       display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-      align-items: flex-start;
-    }
-
-    .label {
-      color: #64748b;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      min-width: 68px;
-      padding-top: 2px;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s, transform 0.15s;
       flex-shrink: 0;
     }
-
-    .value {
-      color: #cbd5e1;
-      font-size: 0.95rem;
+    .speak-btn:hover { opacity: 0.85; transform: scale(1.1); }
+    .speak-btn:active { transform: scale(0.95); }
+    .ipa {
+      font-size: 1.05rem;
+      color: #9f7aea;
+      margin-bottom: 0.6rem;
+      font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', sans-serif;
+    }
+    .pronunciation {
+      background: #1e2235;
+      border-left: 3px solid #667eea;
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 1rem;
+      font-size: 0.88rem;
+      color: #a0aec0;
+      margin-bottom: 0.9rem;
+    }
+    .pronunciation strong { color: #cbd5e0; }
+    .meaning {
+      font-size: 1.1rem;
+      color: #f6e05e;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #4a5568;
+      margin-bottom: 0.35rem;
+    }
+    .example-block {
+      background: #12151f;
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .example-en {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.35rem;
+    }
+    .example-en span {
+      font-size: 0.97rem;
+      color: #e2e8f0;
       line-height: 1.6;
       flex: 1;
     }
-
-    .ipa {
-      font-family: "Lucida Sans Unicode", "Arial Unicode MS", sans-serif;
-      color: #a3b4cc;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-    }
-
-    .meaning {
-      color: #f0f4ff;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    /* Example sentence block */
-    .example-block {
-      background: #252b3e;
-      border-left: 3px solid #4f6ef7;
-      border-radius: 0 10px 10px 0;
-      padding: 12px 14px;
-      margin-bottom: 12px;
-    }
-
-    .example-en {
-      color: #bfdbfe;
-      font-size: 0.95rem;
-      font-style: italic;
-      line-height: 1.6;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .example-en span { flex: 1; }
-
-    .ex-speak-btn {
-      background: transparent;
+    .example-speak-btn {
+      background: #2d3748;
       border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      padding: 2px 4px;
       border-radius: 6px;
-      transition: background 0.15s;
+      padding: 3px 7px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #a0aec0;
+      transition: background 0.2s;
       flex-shrink: 0;
-      line-height: 1;
       margin-top: 2px;
     }
-
-    .ex-speak-btn:hover { background: #2d3348; }
-
-    .example-zh {
-      color: #94a3b8;
-      font-size: 0.85rem;
-      margin-top: 6px;
+    .example-speak-btn:hover { background: #4a5568; color: #f7fafc; }
+    .example-cn {
+      font-size: 0.87rem;
+      color: #718096;
+      line-height: 1.5;
       padding-left: 0;
     }
-
-    /* Tip */
     .tip-block {
-      background: #1e2a1e;
-      border: 1px solid #2a3d2a;
+      background: #1a2035;
+      border: 1px dashed #4a5568;
       border-radius: 10px;
-      padding: 11px 14px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin-top: 4px;
-    }
-
-    .tip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-
-    .tip-text {
-      color: #86efac;
-      font-size: 0.875rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.88rem;
+      color: #a0aec0;
       line-height: 1.6;
     }
-
+    .tip-block::before {
+      content: "💡 ";
+    }
     footer {
       text-align: center;
-      margin-top: 52px;
-      color: #475569;
-      font-size: 0.8rem;
+      margin-top: 3rem;
+      color: #4a5568;
+      font-size: 0.85rem;
     }
-
-    footer a { color: #60a5fa; text-decoration: none; }
+    footer a { color: #667eea; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 500px) {
-      .word-title { font-size: 1.4rem; }
-      .card { padding: 20px 18px; }
-    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>📚 每日英语单词</h1>
+    <p>2026年4月21日 · 第 8 期 · 5个实用词汇</p>
+  </header>
 
-<header>
-  <h1>📖 每日英语单词</h1>
-  <p>第 7 期 · 2026年4月20日 · 职场 &amp; 生活高频词</p>
-</header>
+  <div class="container">
 
-<div class="container">
-
-  <!-- ① assertive -->
-  <div class="card">
-    <div class="card-header">
-      <div class="word-number">1</div>
-      <span class="word-title">assertive</span>
-      <span class="pos-tag">adj.</span>
-      <button class="speak-btn" onclick="speakWord('assertive')" title="朗读单词">🔊</button>
-    </div>
-
-    <div class="row">
-      <span class="label">音标</span>
-      <span class="value ipa">/əˈsɜːrtɪv/</span>
-    </div>
-
-    <div class="row">
-      <span class="label">发音</span>
-      <span class="value">重音在第二音节 <strong>-SER-</strong>，读作"额-<strong>瑟</strong>-提夫"。-ser- 中的元音是 /ɜː/，类似汉语"瑟"的音，嘴形半开圆唇，不是"塞"也不是"沙"。结尾 -tive 轻读"提夫"即可。</span>
-    </div>
-
-    <div class="row">
-      <span class="label">词义</span>
-      <span class="value meaning">自信果断的；敢于表达自我的；坚定的</span>
-    </div>
-
-    <div class="example-block">
-      <div class="example-en">
-        <span>Being assertive at work means speaking up for your ideas without being aggressive.</span>
-        <button class="ex-speak-btn" onclick="speakText('Being assertive at work means speaking up for your ideas without being aggressive.')" title="朗读例句">🔊</button>
+    <!-- Word 1: influence -->
+    <div class="card">
+      <div class="word-header">
+        <div class="word-num">1</div>
+        <div class="word-title">influence</div>
+        <div class="word-pos">v. / n.</div>
+        <button class="speak-btn" onclick="speak('influence')" title="朗读单词">🔊</button>
       </div>
-      <div class="example-zh">在工作中做到自信果断，意味着勇于表达自己的想法，同时不带攻击性。</div>
+      <div class="ipa">/ ˈɪnfluəns /</div>
+      <div class="pronunciation">
+        <strong>发音要点：</strong>重音在第一音节 <strong>IN</strong>-flu-ence，"in"发短促的/ɪ/，"flu"轻读，尾音"ence"类似中文"恩斯"但更轻。常见错误是将重音放在第二音节。
+      </div>
+      <div class="meaning">影响；影响力；左右</div>
+      <div class="section-label">例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <span>Her calm leadership style <strong>influenced</strong> the entire team's attitude toward the project.</span>
+          <button class="example-speak-btn" onclick="speak('Her calm leadership style influenced the entire team\'s attitude toward the project.')">🔊</button>
+        </div>
+        <div class="example-cn">她沉稳的领导风格影响了整个团队对项目的态度。</div>
+      </div>
+      <div class="tip-block">词根 "flu" 来自拉丁语"流动"，influence 原意是"流入的力量"，就像水流影响水中的物体——联想：你的<strong>影响力</strong>像水一样流入别人心中。</div>
     </div>
 
-    <div class="tip-block">
-      <span class="tip-icon">💡</span>
-      <span class="tip-text">词根：<strong>assert</strong>（断言、主张）+ <strong>-ive</strong>（形容词后缀）→ 善于主张自我立场的，即"果断自信的"。区分：assertive（自信坚定）≠ aggressive（咄咄逼人）。职场中 "be more assertive" 是常见正面建议。</span>
+    <!-- Word 2: strategic -->
+    <div class="card">
+      <div class="word-header">
+        <div class="word-num">2</div>
+        <div class="word-title">strategic</div>
+        <div class="word-pos">adj.</div>
+        <button class="speak-btn" onclick="speak('strategic')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ strəˈtiːdʒɪk /</div>
+      <div class="pronunciation">
+        <strong>发音要点：</strong>重音在第二音节 <strong>TE</strong>，读作/strəˈtiːdʒɪk/，第一音节"str"快速带过，"te"发长音/iː/，结尾"gic"类似"疾克"。注意不要读成 "stra-TEE-jic"。
+      </div>
+      <div class="meaning">战略性的；有策略的；重要的</div>
+      <div class="section-label">例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <span>We need to make a <strong>strategic</strong> decision about which markets to enter next year.</span>
+          <button class="example-speak-btn" onclick="speak('We need to make a strategic decision about which markets to enter next year.')">🔊</button>
+        </div>
+        <div class="example-cn">我们需要就明年进入哪些市场做出战略性决策。</div>
+      </div>
+      <div class="tip-block">来自 "strategy"（策略），加 "-ic" 变形容词。记忆：strategic = strategy 的"魂"，做事有 strategy 的人就是 strategic thinking 的人。职场高频词，常见搭配：strategic planning（战略规划）、strategic thinking（战略思维）。</div>
     </div>
+
+    <!-- Word 3: confident -->
+    <div class="card">
+      <div class="word-header">
+        <div class="word-num">3</div>
+        <div class="word-title">confident</div>
+        <div class="word-pos">adj.</div>
+        <button class="speak-btn" onclick="speak('confident')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ ˈkɒnfɪdənt /</div>
+      <div class="pronunciation">
+        <strong>发音要点：</strong>重音在第一音节 <strong>CON</strong>，"con"发/kɒn/，类似中文"康"但短而圆，"fi"轻读/fɪ/，结尾"dent"发/dənt/不要加额外重音。整体节奏：重-轻-轻。
+      </div>
+      <div class="meaning">自信的；有把握的；坚信的</div>
+      <div class="section-label">例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <span>She walked into the interview feeling <strong>confident</strong> and well-prepared.</span>
+          <button class="example-speak-btn" onclick="speak('She walked into the interview feeling confident and well-prepared.')">🔊</button>
+        </div>
+        <div class="example-cn">她走进面试时感到自信满满、准备充分。</div>
+      </div>
+      <div class="tip-block">词根 "con-"（共同）+ "fid"（信任，来自拉丁 fidere），"confident" = 内心充满自我信任。类比：confidence（名词）、confide（倾诉秘密）都是同一词根家族，信任感拉满！</div>
+    </div>
+
+    <!-- Word 4: routine -->
+    <div class="card">
+      <div class="word-header">
+        <div class="word-num">4</div>
+        <div class="word-title">routine</div>
+        <div class="word-pos">n. / adj.</div>
+        <button class="speak-btn" onclick="speak('routine')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ ruːˈtiːn /</div>
+      <div class="pronunciation">
+        <strong>发音要点：</strong>重音在第二音节 <strong>TINE</strong>，读/ruːˈtiːn/，前半"roo"发长音类似中文"如"，后半"teen"发长音/tiːn/，整体音调上扬。不要读成"ROO-tin"。
+      </div>
+      <div class="meaning">日常惯例；常规程序；（adj.）例行的</div>
+      <div class="section-label">例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <span>Building a morning <strong>routine</strong> can greatly improve your focus and productivity throughout the day.</span>
+          <button class="example-speak-btn" onclick="speak('Building a morning routine can greatly improve your focus and productivity throughout the day.')">🔊</button>
+        </div>
+        <div class="example-cn">建立晨间惯例能大幅提升你全天的专注力和工作效率。</div>
+      </div>
+      <div class="tip-block">来自法语 "route"（道路），routine 就是你每天走的那条"固定路线"。生活里有 routine 的人往往更高效，职场常说 "daily routine"（日常流程）和 "routine check"（例行检查）。</div>
+    </div>
+
+    <!-- Word 5: opportunity -->
+    <div class="card">
+      <div class="word-header">
+        <div class="word-num">5</div>
+        <div class="word-title">opportunity</div>
+        <div class="word-pos">n.</div>
+        <button class="speak-btn" onclick="speak('opportunity')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ ˌɒpəˈtjuːnɪti /</div>
+      <div class="pronunciation">
+        <strong>发音要点：</strong>重音在第三音节 <strong>TU</strong>，完整节奏：op-por-<strong>TU</strong>-ni-ty，"op"轻读/ɒp/，"por"轻读/pə/，"tu"发/tjuː/类似"久"，结尾"-nity"轻读。易错：将重音放在第一或第二音节。
+      </div>
+      <div class="meaning">机会；良机；时机</div>
+      <div class="section-label">例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <span>This project is a great <strong>opportunity</strong> to showcase your skills to senior management.</span>
+          <button class="example-speak-btn" onclick="speak('This project is a great opportunity to showcase your skills to senior management.')">🔊</button>
+        </div>
+        <div class="example-cn">这个项目是向高层管理者展示你能力的绝佳机会。</div>
+      </div>
+      <div class="tip-block">词根 "port"（港口），古时船只等待"进港的好时机"即 opportunity。联想：港口 → 机会之港。常见搭配：seize/grab an opportunity（抓住机会）、miss an opportunity（错过机会）。</div>
+    </div>
+
   </div>
 
-  <!-- ② perspective -->
-  <div class="card">
-    <div class="card-header">
-      <div class="word-number">2</div>
-      <span class="word-title">perspective</span>
-      <span class="pos-tag">n.</span>
-      <button class="speak-btn" onclick="speakWord('perspective')" title="朗读单词">🔊</button>
-    </div>
+  <footer>
+    <p>🌐 在线查看：<a href="https://no8excuse.github.io/daily-words/" target="_blank">no8excuse.github.io/daily-words</a></p>
+    <p style="margin-top:0.5rem;">每日坚持，积累成长 ✨</p>
+  </footer>
 
-    <div class="row">
-      <span class="label">音标</span>
-      <span class="value ipa">/pərˈspektɪv/</span>
-    </div>
-
-    <div class="row">
-      <span class="label">发音</span>
-      <span class="value">重音在第二音节 <strong>-SPEC-</strong>，读作"铺-<strong>斯佩</strong>克-提夫"。注意第一个音节 per- 轻读成"铺"（弱化 /pər/），不要念成"珀"或"派"。-spec- 发清晰的"斯佩克"，这是重音核心。</span>
-    </div>
-
-    <div class="row">
-      <span class="label">词义</span>
-      <span class="value meaning">视角；观点；看法；透视法</span>
-    </div>
-
-    <div class="example-block">
-      <div class="example-en">
-        <span>Try to look at this problem from the customer's perspective before making a decision.</span>
-        <button class="ex-speak-btn" onclick="speakText('Try to look at this problem from the customer\'s perspective before making a decision.')" title="朗读例句">🔊</button>
-      </div>
-      <div class="example-zh">在做决定之前，试着从客户的角度来看这个问题。</div>
-    </div>
-
-    <div class="tip-block">
-      <span class="tip-icon">💡</span>
-      <span class="tip-text">词根：<strong>per-</strong>（穿透）+ <strong>spec</strong>（看，同 inspect、spectacle）+ <strong>-ive</strong> → 穿透事物"看透"的方式，即"视角/观点"。高频搭配：from sb's perspective（从某人的角度）、gain a new perspective（获得新视角）。</span>
-    </div>
-  </div>
-
-  <!-- ③ comprehensive -->
-  <div class="card">
-    <div class="card-header">
-      <div class="word-number">3</div>
-      <span class="word-title">comprehensive</span>
-      <span class="pos-tag">adj.</span>
-      <button class="speak-btn" onclick="speakWord('comprehensive')" title="朗读单词">🔊</button>
-    </div>
-
-    <div class="row">
-      <span class="label">音标</span>
-      <span class="value ipa">/ˌkɒmprɪˈhensɪv/</span>
-    </div>
-
-    <div class="row">
-      <span class="label">发音</span>
-      <span class="value">重音在第四音节 <strong>-HEN-</strong>，读作"康-铺瑞-<strong>hen</strong>-斯夫"。这个词音节较多（5个），按节奏念：com-pri-HEN-sive，把力气押在"hen"上。-sive 结尾轻读"斯夫"，不要拖长。</span>
-    </div>
-
-    <div class="row">
-      <span class="label">词义</span>
-      <span class="value meaning">全面的；综合的；详尽的；涵盖广泛的</span>
-    </div>
-
-    <div class="example-block">
-      <div class="example-en">
-        <span>The report provides a comprehensive overview of the market trends in 2025.</span>
-        <button class="ex-speak-btn" onclick="speakText('The report provides a comprehensive overview of the market trends in 2025.')" title="朗读例句">🔊</button>
-      </div>
-      <div class="example-zh">这份报告对2025年的市场趋势做了全面综述。</div>
-    </div>
-
-    <div class="tip-block">
-      <span class="tip-icon">💡</span>
-      <span class="tip-text">词根：<strong>comprehend</strong>（理解，源自拉丁语"完全抓住"）+ <strong>-ive</strong> → 能"抓住"所有方面的 → 全面的。记忆：comprehensive = comprehensive plan（全面计划），职场中写报告、做调研时高频使用。</span>
-    </div>
-  </div>
-
-  <!-- ④ consistent -->
-  <div class="card">
-    <div class="card-header">
-      <div class="word-number">4</div>
-      <span class="word-title">consistent</span>
-      <span class="pos-tag">adj.</span>
-      <button class="speak-btn" onclick="speakWord('consistent')" title="朗读单词">🔊</button>
-    </div>
-
-    <div class="row">
-      <span class="label">音标</span>
-      <span class="value ipa">/kənˈsɪstənt/</span>
-    </div>
-
-    <div class="row">
-      <span class="label">发音</span>
-      <span class="value">重音在第二音节 <strong>-SIS-</strong>，读作"肯-<strong>斯斯</strong>-腾特"。注意 con- 弱化读"肯"，-tent 结尾读"腾特"，中间两个 s 连读，形成"斯斯"的双辅音感。不要误读成 "con-SIS-tant"（-tant 是错的）。</span>
-    </div>
-
-    <div class="row">
-      <span class="label">词义</span>
-      <span class="value meaning">始终如一的；一致的；持续稳定的</span>
-    </div>
-
-    <div class="example-block">
-      <div class="example-en">
-        <span>Consistent effort over months is more valuable than one burst of energy.</span>
-        <button class="ex-speak-btn" onclick="speakText('Consistent effort over months is more valuable than one burst of energy.')" title="朗读例句">🔊</button>
-      </div>
-      <div class="example-zh">数月来持续稳定的努力，比一时的爆发更有价值。</div>
-    </div>
-
-    <div class="tip-block">
-      <span class="tip-icon">💡</span>
-      <span class="tip-text">词根：<strong>con-</strong>（共同）+ <strong>sist</strong>（站立，同 exist、resist）→ 始终"站在同一位置"不偏移，即"一致的"。联想：consistent performance（稳定发挥），是职场考核中最受重视的品质之一。</span>
-    </div>
-  </div>
-
-  <!-- ⑤ accomplish -->
-  <div class="card">
-    <div class="card-header">
-      <div class="word-number">5</div>
-      <span class="word-title">accomplish</span>
-      <span class="pos-tag">v.</span>
-      <button class="speak-btn" onclick="speakWord('accomplish')" title="朗读单词">🔊</button>
-    </div>
-
-    <div class="row">
-      <span class="label">音标</span>
-      <span class="value ipa">/əˈkɒmplɪʃ/</span>
-    </div>
-
-    <div class="row">
-      <span class="label">发音</span>
-      <span class="value">重音在第二音节 <strong>-COM-</strong>，读作"额-<strong>康</strong>-普利什"。注意第一音节 a- 弱化为"额"（/ə/），不要读成"啊"。结尾 -plish 读"普利什"，-sh 是清音，嘴形像在"嘘"人。</span>
-    </div>
-
-    <div class="row">
-      <span class="label">词义</span>
-      <span class="value meaning">完成；实现；达到（目标/任务）</span>
-    </div>
-
-    <div class="example-block">
-      <div class="example-en">
-        <span>What did you accomplish this week? Let's share our wins in the team meeting.</span>
-        <button class="ex-speak-btn" onclick="speakText('What did you accomplish this week? Let\'s share our wins in the team meeting.')" title="朗读例句">🔊</button>
-      </div>
-      <div class="example-zh">这周你完成了什么？让我们在团队会议上分享各自的成果吧。</div>
-    </div>
-
-    <div class="tip-block">
-      <span class="tip-icon">💡</span>
-      <span class="tip-text">词根：<strong>ac-</strong>（加强）+ <strong>com-</strong>（完全）+ <strong>pli</strong>（填满，同 complete、comply）→ 把任务"完全填满完成"。同族词：accomplishment（成就）、accomplished（有才能的）。周报/绩效评估中高频出现。</span>
-    </div>
-  </div>
-
-</div><!-- /container -->
-
-<footer>
-  <p>📅 第 7 期 · 2026年4月20日 &nbsp;|&nbsp; <a href="https://no8excuse.github.io/daily-words/" target="_blank">查看全部期数 →</a></p>
-  <p style="margin-top:8px;">已累计学习单词：第1-6期共30个 + 今日5个 = <strong>35个</strong></p>
-</footer>
-
-<script>
-  function speakWord(word) {
-    if (!window.speechSynthesis) {
-      alert('当前浏览器不支持语音播放，请使用 Chrome 或 Edge。');
-      return;
+  <script>
+    function speak(text) {
+      if (!('speechSynthesis' in window)) {
+        alert('您的浏览器不支持语音合成功能');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.88;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      const voices = window.speechSynthesis.getVoices();
+      const preferred = voices.find(v =>
+        v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Enhanced'))
+      );
+      if (preferred) utterance.voice = preferred;
+      window.speechSynthesis.speak(utterance);
     }
-    const utt = new SpeechSynthesisUtterance(word);
-    utt.lang = 'en-US';
-    utt.rate = 0.85;
-    utt.pitch = 1;
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utt);
-  }
-
-  function speakText(text) {
-    if (!window.speechSynthesis) {
-      alert('当前浏览器不支持语音播放，请使用 Chrome 或 Edge。');
-      return;
-    }
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = 'en-US';
-    utt.rate = 0.9;
-    utt.pitch = 1;
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utt);
-  }
-</script>
-
+    // 预加载语音列表
+    window.speechSynthesis.onvoiceschanged = function() {
+      window.speechSynthesis.getVoices();
+    };
+  </script>
 </body>
 </html>
