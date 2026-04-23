@@ -1,356 +1,443 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日英语单词 — April 22, 2026</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语单词 · 第10期 · 2026-04-23</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background: #0f1117;
       color: #e2e8f0;
-      font-family: 'Segoe UI', 'PingFang SC', sans-serif;
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
       min-height: 100vh;
-      padding: 32px 16px;
+      padding: 24px 16px 60px;
     }
+
     header {
       text-align: center;
-      margin-bottom: 40px;
+      padding: 36px 16px 28px;
     }
     header h1 {
       font-size: 2rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
+      letter-spacing: 2px;
     }
     header p {
-      color: #94a3b8;
+      color: #64748b;
+      margin-top: 8px;
       font-size: 0.95rem;
     }
-    .container {
-      max-width: 800px;
+    .issue-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #1e3a5f, #2e1a5e);
+      border: 1px solid #3b82f6;
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.82rem;
+      color: #93c5fd;
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 22px;
+      max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
     }
+
     .card {
-      background: #1e2433;
+      background: #1a1f2e;
+      border: 1px solid #2d3548;
       border-radius: 16px;
-      padding: 28px 30px;
-      border: 1px solid #2d3748;
-      position: relative;
+      padding: 26px 24px 22px;
       transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
     }
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(96,165,250,0.12);
-    }
-    .card-number {
+    .card::before {
+      content: '';
       position: absolute;
-      top: 20px;
-      right: 24px;
-      font-size: 2rem;
-      font-weight: 800;
-      color: #2d3748;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
     }
+    .card:nth-child(1)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+    .card:nth-child(2)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+    .card:nth-child(3)::before { background: linear-gradient(90deg, #ec4899, #f472b6); }
+    .card:nth-child(4)::before { background: linear-gradient(90deg, #10b981, #34d399); }
+    .card:nth-child(5)::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+
+    .card-num {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 2.5rem;
+      font-weight: 900;
+      opacity: 0.06;
+      line-height: 1;
+    }
+
     .word-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 6px;
     }
     .word {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #60a5fa;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      letter-spacing: 0.5px;
     }
     .pos {
-      background: #312e81;
-      color: #a5b4fc;
+      font-size: 0.78rem;
+      background: #1e3a5f;
+      color: #60a5fa;
       border-radius: 6px;
-      padding: 2px 10px;
-      font-size: 0.8rem;
+      padding: 2px 9px;
       font-weight: 600;
-      letter-spacing: 0.03em;
     }
     .speak-btn {
       background: none;
-      border: none;
+      border: 1px solid #3b82f6;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
       cursor: pointer;
-      font-size: 1.35rem;
-      line-height: 1;
       color: #60a5fa;
-      padding: 2px 4px;
-      transition: transform 0.15s;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.18s, transform 0.15s;
+      flex-shrink: 0;
     }
-    .speak-btn:hover { transform: scale(1.2); }
-    .ipa {
-      font-size: 1rem;
+    .speak-btn:hover { background: #1e3a5f; transform: scale(1.1); }
+    .speak-btn.small {
+      width: 26px;
+      height: 26px;
+      font-size: 0.8rem;
+      border-color: #475569;
       color: #94a3b8;
-      font-family: 'Courier New', monospace;
-      margin-bottom: 4px;
     }
-    .pronunciation {
-      background: #162032;
-      border-left: 3px solid #38bdf8;
-      border-radius: 0 8px 8px 0;
-      padding: 8px 14px;
-      font-size: 0.88rem;
-      color: #7dd3fc;
-      margin-bottom: 12px;
+    .speak-btn.small:hover { background: #1e293b; }
+
+    .ipa {
+      color: #94a3b8;
+      font-size: 1rem;
+      margin-top: 6px;
+      font-style: italic;
     }
-    .pronunciation::before {
-      content: '🗣 发音要点：';
+
+    .section {
+      margin-top: 14px;
+    }
+    .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #475569;
       font-weight: 600;
-      color: #38bdf8;
+      margin-bottom: 5px;
     }
     .meaning {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #f1f5f9;
-      margin-bottom: 14px;
+      color: #e2e8f0;
+      font-size: 1rem;
+      line-height: 1.5;
     }
-    .examples {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 14px;
+    .pronunciation-tip {
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      background: #12172a;
+      border-left: 3px solid #3b82f6;
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
     }
-    .example-item {
-      background: #161b27;
+
+    .example {
+      background: #12172a;
       border-radius: 10px;
-      padding: 10px 14px;
+      padding: 12px 14px;
+      margin-top: 0;
     }
-    .example-en {
+    .example-en-row {
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      font-size: 0.95rem;
-      color: #e2e8f0;
-      font-style: italic;
-      margin-bottom: 4px;
+    }
+    .example-en {
+      color: #93c5fd;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+    .example-en strong {
+      color: #60a5fa;
+      font-weight: 700;
     }
     .example-zh {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      padding-left: 28px;
+      color: #64748b;
+      font-size: 0.84rem;
+      margin-top: 6px;
+      line-height: 1.5;
     }
-    .tip {
-      background: #1a2e1a;
-      border-left: 3px solid #4ade80;
-      border-radius: 0 8px 8px 0;
-      padding: 8px 14px;
+
+    .tip-box {
+      background: linear-gradient(135deg, #1a1f2e, #12172a);
+      border: 1px dashed #334155;
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #fbbf24;
       font-size: 0.87rem;
-      color: #86efac;
+      line-height: 1.6;
     }
-    .tip::before {
-      content: '💡 记忆提示：';
-      font-weight: 600;
-      color: #4ade80;
-    }
+    .tip-box::before { content: '💡 '; }
+
     footer {
       text-align: center;
       margin-top: 48px;
-      color: #475569;
+      color: #334155;
       font-size: 0.82rem;
     }
-    footer a { color: #60a5fa; text-decoration: none; }
+    footer a { color: #3b82f6; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>📚 每日英语单词</h1>
-  <p>April 22, 2026 &nbsp;·&nbsp; 第 9 期 &nbsp;·&nbsp; 生活 &amp; 职场实用词汇</p>
+  <h1>每日英语单词</h1>
+  <p>每天 5 个实用词汇 · 生活 &amp; 职场双场景</p>
+  <div class="issue-badge">第 10 期 · 2026年04月23日</div>
 </header>
 
-<div class="container">
+<div class="grid">
 
-  <!-- 单词 1: persistent -->
+  <!-- 1. navigate -->
   <div class="card">
-    <div class="card-number">01</div>
+    <div class="card-num">1</div>
     <div class="word-row">
-      <span class="word">persistent</span>
+      <span class="word">navigate</span>
+      <span class="pos">v.</span>
+      <button class="speak-btn" onclick="speak('navigate')" title="朗读单词">🔊</button>
+    </div>
+    <div class="ipa">/ ˈnævɪɡeɪt /</div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-tip">
+        重音在第一音节 <strong>NAV</strong>-i-gate。"nav" 发 /næv/，类似"耐夫"但短促；"-gate" 发 /ɡeɪt/，像中文"盖特"。注意 "navi-" 不要读成 "na-VY"。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">中文词义</div>
+      <div class="meaning">导航；应对（复杂局面）；在……中穿行</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example">
+        <div class="example-en-row">
+          <span class="example-en">She learned to <strong>navigate</strong> the complex approval process at her new company.</span>
+          <button class="speak-btn small" onclick="speak('She learned to navigate the complex approval process at her new company.')" title="朗读例句">🔊</button>
+        </div>
+        <div class="example-zh">她学会了应对新公司复杂的审批流程。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">记忆提示</div>
+      <div class="tip-box">词根 <em>navis</em>（拉丁语"船"）+ <em>agere</em>（驾驶）→ 驾船穿行。延伸记忆：职场中"navigate challenges"就像驾船穿越风浪，既需要方向感，也需要技巧。</div>
+    </div>
+  </div>
+
+  <!-- 2. appreciate -->
+  <div class="card">
+    <div class="card-num">2</div>
+    <div class="word-row">
+      <span class="word">appreciate</span>
+      <span class="pos">v.</span>
+      <button class="speak-btn" onclick="speak('appreciate')" title="朗读单词">🔊</button>
+    </div>
+    <div class="ipa">/ əˈpriːʃieɪt /</div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-tip">
+        重音在第二音节 <strong>PREE</strong>。"-ci-" 发 /ʃ/ 音，类似"西"但更轻；完整读作"呃-<strong>普里</strong>-shiˌeɪt"。常见错误：将 "-iate" 读成两个音节 /i.eɪt/，其实更像 /ʃieɪt/。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">中文词义</div>
+      <div class="meaning">感激；欣赏；理解认识到（某事物的价值）</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example">
+        <div class="example-en-row">
+          <span class="example-en">I really <strong>appreciate</strong> your patience with me during the training period.</span>
+          <button class="speak-btn small" onclick="speak('I really appreciate your patience with me during the training period.')" title="朗读例句">🔊</button>
+        </div>
+        <div class="example-zh">我非常感激你在培训期间对我的耐心。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">记忆提示</div>
+      <div class="tip-box">词根 <em>pretium</em>（价格/价值）→ <em>appreciate</em> = 认识到价值 → 感激 / 欣赏。联想：你"appreciate"某人，就是认定他们对你很"precious"（珍贵）。</div>
+    </div>
+  </div>
+
+  <!-- 3. vulnerable -->
+  <div class="card">
+    <div class="card-num">3</div>
+    <div class="word-row">
+      <span class="word">vulnerable</span>
       <span class="pos">adj.</span>
-      <button class="speak-btn" onclick="speak('persistent')" title="朗读单词">🔊</button>
+      <button class="speak-btn" onclick="speak('vulnerable')" title="朗读单词">🔊</button>
     </div>
-    <div class="ipa">/pərˈsɪstənt/</div>
-    <div class="pronunciation">重音在第二音节 "SIS"，/pər/ 轻读类似中文"珀"，/sɪs/ 类似"西斯"，/tənt/ 轻读收尾。常见错误：把重音放在第一音节。</div>
-    <div class="meaning">坚持不懈的；持续的；执着的</div>
-    <div class="examples">
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('She is persistent in pursuing her career goals, never giving up after setbacks.')" title="朗读例句">🔊</button>
-          <span>She is persistent in pursuing her career goals, never giving up after setbacks.</span>
-        </div>
-        <div class="example-zh">她在追求职业目标方面坚持不懈，遭遇挫折后从不放弃。</div>
-      </div>
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('The persistent noise from the construction site made it hard to focus.')" title="朗读例句">🔊</button>
-          <span>The persistent noise from the construction site made it hard to focus.</span>
-        </div>
-        <div class="example-zh">建筑工地持续不断的噪音让人很难集中注意力。</div>
+    <div class="ipa">/ ˈvʌlnərəbl /</div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-tip">
+        重音在第一音节 <strong>VUL</strong>，/vʌl/ 发"伐"短促音；"-nerable" 读作 /nərəbl/，中间 "e" 轻读几乎省略。常见错误：把 "l" 前的 "u" 读成 /uː/ 拉长，应该是短促的 /ʌ/（类似"啊"）。
       </div>
     </div>
-    <div class="tip">persist（坚持）+ -ent（形容词后缀）= 持续坚持的。想象一个人"per-sist-ent"坚持到底，"死磕"不放弃。</div>
+
+    <div class="section">
+      <div class="label">中文词义</div>
+      <div class="meaning">脆弱的；易受伤的；坦诚示弱的（积极义）</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example">
+        <div class="example-en-row">
+          <span class="example-en">Being <strong>vulnerable</strong> with your team can actually build trust and stronger connections.</span>
+          <button class="speak-btn small" onclick="speak('Being vulnerable with your team can actually build trust and stronger connections.')" title="朗读例句">🔊</button>
+        </div>
+        <div class="example-zh">在团队面前展示脆弱一面，反而能建立信任和更深的连结。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">记忆提示</div>
+      <div class="tip-box">词根 <em>vulnus</em>（拉丁语"伤口"）→ vulnerable = 容易被伤到的。现代职场常说"be vulnerable"是勇敢坦诚，不是软弱——像布芮尼·布朗的名言一样。</div>
+    </div>
   </div>
 
-  <!-- 单词 2: negotiate -->
-  <!-- Already used in period 3, skip -->
-
-  <!-- 单词 2: genuine -> already used, pick: articulate -->
+  <!-- 4. benchmark -->
   <div class="card">
-    <div class="card-number">02</div>
+    <div class="card-num">4</div>
     <div class="word-row">
-      <span class="word">articulate</span>
-      <span class="pos">adj. / v.</span>
-      <button class="speak-btn" onclick="speak('articulate')" title="朗读单词">🔊</button>
+      <span class="word">benchmark</span>
+      <span class="pos">n. / v.</span>
+      <button class="speak-btn" onclick="speak('benchmark')" title="朗读单词">🔊</button>
     </div>
-    <div class="ipa">/ɑːrˈtɪkjʊlət/ (adj.) &nbsp; /ɑːrˈtɪkjʊleɪt/ (v.)</div>
-    <div class="pronunciation">重音在第二音节 "TIK"，/ɑːr/ 类似中文"阿"带卷舌，/tɪk/ 类似"踢克"，/jʊlət/ 轻读。形容词和动词结尾发音不同：形容词末尾是 /ət/，动词末尾是 /eɪt/。</div>
-    <div class="meaning">（形）表达清晰的；口才好的 &nbsp;|&nbsp; （动）清晰地表达；阐明</div>
-    <div class="examples">
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('She is an articulate speaker who can explain complex ideas simply.')" title="朗读例句">🔊</button>
-          <span>She is an articulate speaker who can explain complex ideas simply.</span>
-        </div>
-        <div class="example-zh">她是个表达清晰的演讲者，能够简单明了地解释复杂概念。</div>
-      </div>
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('Please articulate your concerns so we can address them properly.')" title="朗读例句">🔊</button>
-          <span>Please articulate your concerns so we can address them properly.</span>
-        </div>
-        <div class="example-zh">请清楚地表达你的顾虑，这样我们才能妥善处理。</div>
+    <div class="ipa">/ ˈbentʃmɑːrk /</div>
+
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-tip">
+        重音在第一音节 <strong>BENCH</strong>，发 /bentʃ/ 类似"本趣"；"-mark" 发 /mɑːrk/，"a" 拉长类似"马克"。合起来："<strong>本趣</strong>-马克"。注意是两个独立单词合并，节奏感分明。
       </div>
     </div>
-    <div class="tip">词根 "articul-" 来自拉丁语 "articulus"（关节/节点），像语言的"关节"顺畅连接——表达流畅清晰。职场高频形容词，夸人口才好就用 "articulate"！</div>
+
+    <div class="section">
+      <div class="label">中文词义</div>
+      <div class="meaning">n. 基准；参照标准 &nbsp;v. 将……与基准对比</div>
+    </div>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example">
+        <div class="example-en-row">
+          <span class="example-en">We need to <strong>benchmark</strong> our performance against industry leaders to find the gap.</span>
+          <button class="speak-btn small" onclick="speak('We need to benchmark our performance against industry leaders to find the gap.')" title="朗读例句">🔊</button>
+        </div>
+        <div class="example-zh">我们需要对标行业领先者，找出自身差距。</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="label">记忆提示</div>
+      <div class="tip-box">bench（工作台）+ mark（刻度/标记）→ 工人在工作台上刻的刻度线 = 基准参考线。想象一把尺子上的刻度，那就是你衡量一切的"benchmark"。</div>
+    </div>
   </div>
 
-  <!-- 单词 3: overwhelm -->
+  <!-- 5. reconcile -->
   <div class="card">
-    <div class="card-number">03</div>
+    <div class="card-num">5</div>
     <div class="word-row">
-      <span class="word">overwhelm</span>
-      <span class="pos">v. / n.</span>
-      <button class="speak-btn" onclick="speak('overwhelm')" title="朗读单词">🔊</button>
+      <span class="word">reconcile</span>
+      <span class="pos">v.</span>
+      <button class="speak-btn" onclick="speak('reconcile')" title="朗读单词">🔊</button>
     </div>
-    <div class="ipa">/ˌoʊvərˈwelm/</div>
-    <div class="pronunciation">重音在末尾 "WELM"，/oʊvər/ 类似"欧-弗"轻读，/welm/ 是重读，/w/ 要圆唇发音，不能省略。常见错误：漏掉 /w/ 音，读成 "overelm"。</div>
-    <div class="meaning">使不知所措；压倒；势不可挡地淹没</div>
-    <div class="examples">
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('The amount of work this week is overwhelming — I need to prioritize.')" title="朗读例句">🔊</button>
-          <span>The amount of work this week is overwhelming — I need to prioritize.</span>
-        </div>
-        <div class="example-zh">这周的工作量让我不知所措——我需要分清轻重缓急。</div>
-      </div>
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('She was overwhelmed by the warm welcome from her new colleagues.')" title="朗读例句">🔊</button>
-          <span>She was overwhelmed by the warm welcome from her new colleagues.</span>
-        </div>
-        <div class="example-zh">新同事们热情的欢迎让她深受感动。</div>
-      </div>
-    </div>
-    <div class="tip">over-（超过）+ whelm（淹没，古英语）= 被彻底淹没。想象海浪 "over the wall"（超过城墙）把人淹没——这就是 overwhelm。</div>
-  </div>
+    <div class="ipa">/ ˈrekənsaɪl /</div>
 
-  <!-- 单词 4: diligent -->
-  <div class="card">
-    <div class="card-number">04</div>
-    <div class="word-row">
-      <span class="word">diligent</span>
-      <span class="pos">adj.</span>
-      <button class="speak-btn" onclick="speak('diligent')" title="朗读单词">🔊</button>
-    </div>
-    <div class="ipa">/ˈdɪlɪdʒənt/</div>
-    <div class="pronunciation">重音在第一音节 "DIL"，/dɪl/ 类似"迪力"，/ɪ/ 是短促的"衣"，/dʒənt/ 类似"真特"轻读。注意 "g" 在这里发 /dʒ/（软音），不发 /g/（硬音）。</div>
-    <div class="meaning">勤勉的；勤奋的；认真仔细的</div>
-    <div class="examples">
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('He is a diligent employee who always submits reports on time.')" title="朗读例句">🔊</button>
-          <span>He is a diligent employee who always submits reports on time.</span>
-        </div>
-        <div class="example-zh">他是个勤奋的员工，总是按时提交报告。</div>
-      </div>
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('Diligent practice every day is the key to improving your English.')" title="朗读例句">🔊</button>
-          <span>Diligent practice every day is the key to improving your English.</span>
-        </div>
-        <div class="example-zh">每天坚持勤奋练习是提高英语水平的关键。</div>
+    <div class="section">
+      <div class="label">发音说明</div>
+      <div class="pronunciation-tip">
+        重音在第一音节 <strong>REC</strong>，发 /rek/ 如"雷克"；中间 "-on-" 轻读 /ən/；结尾 "-cile" 发 /saɪl/ 如"赛欧"。连起来："<strong>雷克</strong>-ən-赛欧"。注意不要把末尾读成 "-sil"，是长音 /saɪl/。
       </div>
     </div>
-    <div class="tip">联想"迪力根特"——迪士尼里的"迪"加"力根"（努力的根基）= 勤奋。或记：dili-gent 里有 "gent"（绅士），绅士都是认真勤勉的人。</div>
-  </div>
 
-  <!-- 单词 5: compromise -->
-  <div class="card">
-    <div class="card-number">05</div>
-    <div class="word-row">
-      <span class="word">compromise</span>
-      <span class="pos">v. / n.</span>
-      <button class="speak-btn" onclick="speak('compromise')" title="朗读单词">🔊</button>
+    <div class="section">
+      <div class="label">中文词义</div>
+      <div class="meaning">使和解；使协调一致；接受（无奈的现实）</div>
     </div>
-    <div class="ipa">/ˈkɒmprəmaɪz/</div>
-    <div class="pronunciation">重音在第一音节 "COM"，/kɒm/ 类似"康姆"，/prə/ 轻读类似"普勒"，/maɪz/ 类似"麦子"。注意不要读成 "com-PRO-mise"（重音误移到第二节）。</div>
-    <div class="meaning">（动）妥协；折中；损害 &nbsp;|&nbsp; （名）妥协；折中方案</div>
-    <div class="examples">
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('Both sides need to compromise to reach a workable agreement.')" title="朗读例句">🔊</button>
-          <span>Both sides need to compromise to reach a workable agreement.</span>
+
+    <div class="section">
+      <div class="label">例句</div>
+      <div class="example">
+        <div class="example-en-row">
+          <span class="example-en">It took both teams a week to <strong>reconcile</strong> their different approaches and agree on a plan.</span>
+          <button class="speak-btn small" onclick="speak('It took both teams a week to reconcile their different approaches and agree on a plan.')" title="朗读例句">🔊</button>
         </div>
-        <div class="example-zh">双方都需要妥协，才能达成一个可行的协议。</div>
-      </div>
-      <div class="example-item">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('Never compromise on product quality just to cut costs.')" title="朗读例句">🔊</button>
-          <span>Never compromise on product quality just to cut costs.</span>
-        </div>
-        <div class="example-zh">绝不要为了降低成本而在产品质量上妥协。</div>
+        <div class="example-zh">两个团队花了一周时间协调各自不同的方案，最终达成共识。</div>
       </div>
     </div>
-    <div class="tip">com-（共同）+ promise（承诺）= 双方共同做出承诺让步 = 妥协。谈判时想到"两人各做一个 promise"就能记住 compromise！</div>
+
+    <div class="section">
+      <div class="label">记忆提示</div>
+      <div class="tip-box">前缀 <em>re-</em>（再次）+ <em>concile</em>（来自 concilium "议会/聚合"）→ 重新聚合 → 和解、协调。财务中"reconcile accounts"（对账核账）就是让数字重新"和谐对齐"。</div>
+    </div>
   </div>
 
 </div>
 
 <footer>
-  <p>🌐 在线查看：<a href="https://no8excuse.github.io/daily-words/" target="_blank">https://no8excuse.github.io/daily-words/</a></p>
-  <p style="margin-top:8px;">每日更新 · 第 9 期 · April 22, 2026</p>
+  <p>📅 2026年04月23日 · 第10期 · 已累计推送 50 个单词</p>
+  <p style="margin-top:6px;">
+    <a href="https://no8excuse.github.io/daily-words/" target="_blank">🌐 在线查看历史词汇</a>
+  </p>
 </footer>
 
 <script>
   function speak(text) {
     if (!window.speechSynthesis) {
-      alert('您的浏览器不支持语音合成功能');
+      alert('您的浏览器不支持语音功能，请使用 Chrome 或 Edge。');
       return;
     }
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.88;
-    utterance.pitch = 1;
-    utterance.volume = 1;
-    // 优先选择英语语音
-    const voices = window.speechSynthesis.getVoices();
-    const engVoice = voices.find(v => v.lang.startsWith('en') && v.localService);
-    if (engVoice) utterance.voice = engVoice;
-    window.speechSynthesis.speak(utterance);
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-US';
+    utter.rate = 0.88;
+    utter.pitch = 1;
+    window.speechSynthesis.speak(utter);
   }
-  // 预加载语音列表
-  window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
 </script>
 
 </body>
