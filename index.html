@@ -1,438 +1,331 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日英语单词 — April 24, 2026</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-    background: #0f1117;
-    color: #e2e8f0;
-    min-height: 100vh;
-    padding: 24px 16px 48px;
-  }
-  header {
-    text-align: center;
-    padding: 32px 0 28px;
-  }
-  header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
-  }
-  header p {
-    color: #64748b;
-    margin-top: 8px;
-    font-size: 0.95rem;
-  }
-  .badge {
-    display: inline-block;
-    background: #1e293b;
-    color: #94a3b8;
-    border: 1px solid #334155;
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 0.8rem;
-    margin-top: 10px;
-  }
-  .cards {
-    max-width: 780px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .card {
-    background: #1e293b;
-    border: 1px solid #2d3f55;
-    border-radius: 16px;
-    padding: 28px 28px 24px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(96, 165, 250, 0.12);
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa);
-  }
-  .card-num {
-    position: absolute;
-    top: 18px; right: 22px;
-    font-size: 2.4rem;
-    font-weight: 800;
-    color: #1e3a5f;
-    line-height: 1;
-    user-select: none;
-  }
-  .word-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 6px;
-  }
-  .word {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #60a5fa;
-    letter-spacing: 1px;
-  }
-  .pos {
-    background: #0f3460;
-    color: #93c5fd;
-    border-radius: 6px;
-    padding: 3px 10px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  .speak-btn {
-    background: none;
-    border: 1px solid #334155;
-    border-radius: 50%;
-    width: 34px; height: 34px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #94a3b8;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-    flex-shrink: 0;
-  }
-  .speak-btn:hover {
-    background: #0f3460;
-    border-color: #60a5fa;
-    color: #60a5fa;
-    transform: scale(1.1);
-  }
-  .ipa {
-    font-family: 'Courier New', monospace;
-    color: #a78bfa;
-    font-size: 1.05rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
-  .section {
-    margin-top: 14px;
-  }
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #475569;
-    margin-bottom: 5px;
-  }
-  .pronunciation-box {
-    background: #0f1a2e;
-    border-left: 3px solid #a78bfa;
-    border-radius: 0 8px 8px 0;
-    padding: 10px 14px;
-    font-size: 0.92rem;
-    color: #c4b5fd;
-    line-height: 1.6;
-  }
-  .meaning {
-    font-size: 1.05rem;
-    color: #e2e8f0;
-    line-height: 1.6;
-  }
-  .example-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: 8px;
-  }
-  .example-text {
-    flex: 1;
-  }
-  .example-en {
-    color: #cbd5e1;
-    font-style: italic;
-    line-height: 1.6;
-    font-size: 0.97rem;
-  }
-  .example-en em {
-    font-style: normal;
-    color: #60a5fa;
-    font-weight: 600;
-  }
-  .example-zh {
-    color: #64748b;
-    font-size: 0.88rem;
-    margin-top: 3px;
-    line-height: 1.5;
-  }
-  .tip-box {
-    background: #1a2a1a;
-    border: 1px solid #2d5a2d;
-    border-radius: 10px;
-    padding: 11px 14px;
-    font-size: 0.9rem;
-    color: #86efac;
-    line-height: 1.6;
-  }
-  .tip-box::before {
-    content: '💡 ';
-  }
-  footer {
-    text-align: center;
-    color: #334155;
-    font-size: 0.8rem;
-    margin-top: 40px;
-  }
-  @media (max-width: 520px) {
-    .word { font-size: 1.6rem; }
-    .card { padding: 22px 18px 20px; }
-    .card-num { font-size: 1.8rem; right: 16px; top: 14px; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日英语单词 — 第12期</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0f1117;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      min-height: 100vh;
+      padding: 32px 16px 60px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    .cards {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .card {
+      background: #1e2230;
+      border: 1px solid #2d3348;
+      border-radius: 16px;
+      padding: 28px 30px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+      transition: transform 0.15s;
+    }
+    .card:hover { transform: translateY(-2px); }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .word-num {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .word-main {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #f1f5f9;
+      letter-spacing: 0.5px;
+    }
+    .word-pos {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      background: #2d3348;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+    .speak-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.35rem;
+      padding: 2px 6px;
+      border-radius: 8px;
+      transition: background 0.15s;
+      line-height: 1;
+    }
+    .speak-btn:hover { background: #2d3348; }
+    .ipa {
+      font-size: 1.05rem;
+      color: #7dd3fc;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 6px;
+    }
+    .section-label {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 14px 0 5px;
+      font-weight: 600;
+    }
+    .pronun-tip {
+      font-size: 0.93rem;
+      color: #fbbf24;
+      background: rgba(251,191,36,0.08);
+      border-left: 3px solid #fbbf24;
+      padding: 8px 14px;
+      border-radius: 0 8px 8px 0;
+      line-height: 1.6;
+    }
+    .meaning {
+      font-size: 1.1rem;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+    .example-block {
+      background: #151824;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 6px;
+    }
+    .example-en {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .example-en span {
+      font-size: 0.97rem;
+      color: #bae6fd;
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .example-cn {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 6px;
+      padding-left: 2px;
+    }
+    .tip-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(167,139,250,0.08);
+      border-left: 3px solid #a78bfa;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      margin-top: 6px;
+    }
+    .tip-icon { font-size: 1.1rem; }
+    .tip-text { font-size: 0.9rem; color: #c4b5fd; line-height: 1.65; }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+    footer a { color: #60a5fa; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>📚 每日英语单词</h1>
+    <p>第 12 期 &nbsp;·&nbsp; 2026-04-27 &nbsp;·&nbsp; 生活 &amp; 职场常用词汇</p>
+  </header>
 
-<header>
-  <h1>📖 每日英语单词</h1>
-  <p>Daily English Words — 生活 · 职场实用词汇</p>
-  <span class="badge">April 24, 2026 · 第 11 期</span>
-</header>
+  <div class="cards">
 
-<div class="cards">
-
-  <!-- 1. allocate -->
-  <div class="card">
-    <div class="card-num">01</div>
-    <div class="word-row">
-      <span class="word">allocate</span>
-      <span class="pos">v. 动词</span>
-      <button class="speak-btn" onclick="speak('allocate')" title="朗读单词">🔊</button>
-    </div>
-    <div class="ipa">/ˈæl.ə.keɪt/</div>
-
-    <div class="section">
+    <!-- 1. engage -->
+    <div class="card">
+      <div class="card-header">
+        <span class="word-num">01</span>
+        <span class="word-main">engage</span>
+        <span class="word-pos">v. 动词</span>
+        <button class="speak-btn" onclick="speak('engage')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ ɪnˈɡeɪdʒ /</div>
       <div class="section-label">发音说明</div>
-      <div class="pronunciation-box">
-        重音在第一个音节 <b>AL</b>。"al" 读作 /æ/，嘴巴张大，类似中文"啊"但更扁；"-lo-" 轻读为 /ə/（弱化的"呃"）；结尾 "-cate" 读 /keɪt/，像英文名字 "Kate"。易错：很多人把重音放到后面，读成 al-LO-cate，需要注意。
-      </div>
-    </div>
-
-    <div class="section">
+      <div class="pronun-tip">重音在第二音节 <strong>-GAGE</strong>，读作"因·盖吉"。注意 <em>en-</em> 读 /ɪn/，不要读成 "en"（英文字母e）；<em>-gage</em> 类比"盖"加轻声 /dʒ/ 尾音。</div>
       <div class="section-label">中文词义</div>
-      <div class="meaning">（正式）分配；拨给（资源、时间、预算等）</div>
-    </div>
-
-    <div class="section">
+      <div class="meaning">参与；使投入；吸引（注意力）；聘用</div>
       <div class="section-label">英文例句</div>
-      <div class="example-row">
-        <div class="example-text">
-          <div class="example-en">We need to <em>allocate</em> more budget to the marketing team this quarter.</div>
-          <div class="example-zh">这个季度我们需要给市场团队分配更多预算。</div>
+      <div class="example-block">
+        <div class="example-en">
+          <button class="speak-btn" onclick="speak('The manager tried to engage the whole team in the new project.')" title="朗读例句">🔊</button>
+          <span>The manager tried to engage the whole team in the new project.</span>
         </div>
-        <button class="speak-btn" onclick="speak('We need to allocate more budget to the marketing team this quarter.')" title="朗读例句">🔊</button>
+        <div class="example-cn">经理努力让整个团队都参与到新项目中。</div>
+      </div>
+      <div class="section-label">记忆提示</div>
+      <div class="tip-block">
+        <span class="tip-icon">💡</span>
+        <span class="tip-text">联想"en（进入）+ gage（量规/计量）"→ 进入到某件事的度量/掌控中，即<em>深度参与</em>。常见职场短语：<strong>engage with stakeholders</strong>（与利益相关方互动）、<strong>customer engagement</strong>（客户黏性）。</span>
       </div>
     </div>
 
-    <div class="section">
+    <!-- 2. pursue -->
+    <div class="card">
+      <div class="card-header">
+        <span class="word-num">02</span>
+        <span class="word-main">pursue</span>
+        <span class="word-pos">v. 动词</span>
+        <button class="speak-btn" onclick="speak('pursue')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ pərˈsuː /</div>
+      <div class="section-label">发音说明</div>
+      <div class="pronun-tip">重音在第二音节 <strong>-SUE</strong>，读作"坡·苏"。第一音节 <em>pur-</em> 轻读为 /pər/，类似"坡"弱读；<em>-sue</em> 发长音 /suː/，不要读成"苏乌"两音节。</div>
+      <div class="section-label">中文词义</div>
+      <div class="meaning">追求；追逐；从事；继续进行</div>
+      <div class="section-label">英文例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <button class="speak-btn" onclick="speak('She decided to pursue a career in data science after graduation.')" title="朗读例句">🔊</button>
+          <span>She decided to pursue a career in data science after graduation.</span>
+        </div>
+        <div class="example-cn">她决定毕业后从事数据科学领域的工作。</div>
+      </div>
       <div class="section-label">记忆提示</div>
-      <div class="tip-box">词根 <b>loc</b> = 地点/位置（location 也含此根）。allocate = 把东西"放到"各个位置 → 分配。想象把预算"安置"到不同部门的格子里。</div>
+      <div class="tip-block">
+        <span class="tip-icon">💡</span>
+        <span class="tip-text">联想：<em>pur-</em>（向前）+ <em>sue</em>（追赶，同sue起诉含追索义）→ 一路向前追赶目标。固定搭配：<strong>pursue a goal / dream / opportunity</strong>。</span>
+      </div>
     </div>
+
+    <!-- 3. mindful -->
+    <div class="card">
+      <div class="card-header">
+        <span class="word-num">03</span>
+        <span class="word-main">mindful</span>
+        <span class="word-pos">adj. 形容词</span>
+        <button class="speak-btn" onclick="speak('mindful')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ ˈmaɪndfəl /</div>
+      <div class="section-label">发音说明</div>
+      <div class="pronun-tip">重音在第一音节 <strong>MIND-</strong>，读作"麦·弗"。<em>mind-</em> 发 /maɪnd/（类比"买nd"）；<em>-ful</em> 轻读为 /fəl/，不要重读成"fool"（/fuːl/）。</div>
+      <div class="section-label">中文词义</div>
+      <div class="meaning">留心的；专注当下的；有意识的（常指正念冥想语境）</div>
+      <div class="section-label">英文例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <button class="speak-btn" onclick="speak('Try to be mindful of your colleagues\' workload before assigning new tasks.')" title="朗读例句">🔊</button>
+          <span>Try to be mindful of your colleagues' workload before assigning new tasks.</span>
+        </div>
+        <div class="example-cn">在分配新任务之前，记得留意同事的工作负荷。</div>
+      </div>
+      <div class="section-label">记忆提示</div>
+      <div class="tip-block">
+        <span class="tip-icon">💡</span>
+        <span class="tip-text"><strong>mind（心智）+ ful（充满）</strong> → 心里装满了某事 → 时刻留意。近年流行语"mindfulness（正念）"就源于此词。职场常说：<strong>be mindful of details</strong>（注意细节）。</span>
+      </div>
+    </div>
+
+    <!-- 4. outcome -->
+    <div class="card">
+      <div class="card-header">
+        <span class="word-num">04</span>
+        <span class="word-main">outcome</span>
+        <span class="word-pos">n. 名词</span>
+        <button class="speak-btn" onclick="speak('outcome')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ ˈaʊtkʌm /</div>
+      <div class="section-label">发音说明</div>
+      <div class="pronun-tip">重音在第一音节 <strong>OUT-</strong>，读作"奥特·卡姆"。<em>out-</em> 发 /aʊt/（类比"奥特"），<em>-come</em> 发 /kʌm/（类比"卡姆"），不要读成"come"的原形发音 /kuːm/。</div>
+      <div class="section-label">中文词义</div>
+      <div class="meaning">结果；成效；（事件的）结局</div>
+      <div class="section-label">英文例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <button class="speak-btn" onclick="speak('The outcome of the negotiation exceeded everyone\'s expectations.')" title="朗读例句">🔊</button>
+          <span>The outcome of the negotiation exceeded everyone's expectations.</span>
+        </div>
+        <div class="example-cn">谈判的结果超出了所有人的预期。</div>
+      </div>
+      <div class="section-label">记忆提示</div>
+      <div class="tip-block">
+        <span class="tip-icon">💡</span>
+        <span class="tip-text"><strong>out（出来）+ come（来）</strong> → 从过程中"走出来"的东西 → 即最终结果。职场高频：<strong>expected outcome（预期成果）</strong>、<strong>measure outcomes（衡量成效）</strong>。与 result 相比，outcome 更强调对目标/行动的影响与意义。</span>
+      </div>
+    </div>
+
+    <!-- 5. innovative -->
+    <div class="card">
+      <div class="card-header">
+        <span class="word-num">05</span>
+        <span class="word-main">innovative</span>
+        <span class="word-pos">adj. 形容词</span>
+        <button class="speak-btn" onclick="speak('innovative')" title="朗读单词">🔊</button>
+      </div>
+      <div class="ipa">/ ˈɪnəveɪtɪv /</div>
+      <div class="section-label">发音说明</div>
+      <div class="pronun-tip">重音在第一音节 <strong>IN-</strong>，读作"因·纳·维·缇弗"（5音节，快读时中间压缩）。易错点：<em>-va-</em> 发 /veɪ/（类比"维"），不要吞掉这个音节；结尾 <em>-tive</em> 轻读 /tɪv/。</div>
+      <div class="section-label">中文词义</div>
+      <div class="meaning">创新的；富有革新精神的；引进新方法的</div>
+      <div class="section-label">英文例句</div>
+      <div class="example-block">
+        <div class="example-en">
+          <button class="speak-btn" onclick="speak('We need innovative solutions to stay ahead of the competition.')" title="朗读例句">🔊</button>
+          <span>We need innovative solutions to stay ahead of the competition.</span>
+        </div>
+        <div class="example-cn">我们需要创新的解决方案，才能在竞争中保持领先。</div>
+      </div>
+      <div class="section-label">记忆提示</div>
+      <div class="tip-block">
+        <span class="tip-icon">💡</span>
+        <span class="tip-text">词根：<strong>in（进入）+ nov（新，如novel/新颖）+ -ative（形容词后缀）</strong> → 引入新事物的 → 创新的。同族词：<em>innovate（v.）、innovation（n.）</em>，三个一起记，效果翻倍。</span>
+      </div>
+    </div>
+
   </div>
 
-  <!-- 2. obstacle -->
-  <div class="card">
-    <div class="card-num">02</div>
-    <div class="word-row">
-      <span class="word">obstacle</span>
-      <span class="pos">n. 名词</span>
-      <button class="speak-btn" onclick="speak('obstacle')" title="朗读单词">🔊</button>
-    </div>
-    <div class="ipa">/ˈɒb.stə.kəl/</div>
+  <footer>
+    <p>每日更新 &nbsp;|&nbsp; <a href="https://no8excuse.github.io/daily-words/" target="_blank">在线查看历史期数 →</a></p>
+    <p style="margin-top:8px;">Powered by WorkBuddy &nbsp;🤖</p>
+  </footer>
 
-    <div class="section">
-      <div class="section-label">发音说明</div>
-      <div class="pronunciation-box">
-        重音在第一音节 <b>OB</b>，读 /ɒb/，嘴唇圆张，像中文"哦"但更短促；"-sta-" 快速轻读为 /stə/；结尾 "-cle" 读 /kəl/，类似"扣"，但 k 后接弱化的 /əl/。整体节奏：重-轻-轻，三音节。
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">中文词义</div>
-      <div class="meaning">障碍；阻碍（实现目标的困难或阻力）</div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">英文例句</div>
-      <div class="example-row">
-        <div class="example-text">
-          <div class="example-en">Language barriers can be a major <em>obstacle</em> when working with international clients.</div>
-          <div class="example-zh">语言障碍在与国际客户合作时可能是主要阻碍。</div>
-        </div>
-        <button class="speak-btn" onclick="speak('Language barriers can be a major obstacle when working with international clients.')" title="朗读例句">🔊</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">记忆提示</div>
-      <div class="tip-box">谐音联想：obstacle ≈ "哦不，stack了"（被堆满了过不去）→ 障碍物挡住了路。或记场景：obstacle course（障碍赛）是体育赛事常见词组。</div>
-    </div>
-  </div>
-
-  <!-- 3. dedicate -->
-  <div class="card">
-    <div class="card-num">03</div>
-    <div class="word-row">
-      <span class="word">dedicate</span>
-      <span class="pos">v. 动词</span>
-      <button class="speak-btn" onclick="speak('dedicate')" title="朗读单词">🔊</button>
-    </div>
-    <div class="ipa">/ˈded.ɪ.keɪt/</div>
-
-    <div class="section">
-      <div class="section-label">发音说明</div>
-      <div class="pronunciation-box">
-        重音在首音节 <b>DED</b>，读 /ded/，"d" 清晰，"e" 读短促的 /e/（类似中文"得"的元音）；"-i-" 弱读为 /ɪ/；"-cate" 读 /keɪt/（同 Kate）。易错点：有人把 "-ded" 读成 "deed"，注意 "e" 是短元音而非长音。
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">中文词义</div>
-      <div class="meaning">将……奉献给；专注于；把心力投入到（某事/某人）</div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">英文例句</div>
-      <div class="example-row">
-        <div class="example-text">
-          <div class="example-en">She <em>dedicates</em> two hours every morning to reading and personal development.</div>
-          <div class="example-zh">她每天早上专门花两小时阅读和自我提升。</div>
-        </div>
-        <button class="speak-btn" onclick="speak('She dedicates two hours every morning to reading and personal development.')" title="朗读例句">🔊</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">记忆提示</div>
-      <div class="tip-box">前缀 <b>de-</b> 表示"彻底"，词根 <b>dic/dic</b> 源于"宣告/奉献"（同 dictate）。dedicate = 郑重宣告把全部精力给出去 → 奉献、专注。书的"题献页"英文就叫 dedication。</div>
-    </div>
-  </div>
-
-  <!-- 4. interpret -->
-  <div class="card">
-    <div class="card-num">04</div>
-    <div class="word-row">
-      <span class="word">interpret</span>
-      <span class="pos">v. 动词</span>
-      <button class="speak-btn" onclick="speak('interpret')" title="朗读单词">🔊</button>
-    </div>
-    <div class="ipa">/ɪnˈtɜː.prɪt/</div>
-
-    <div class="section">
-      <div class="section-label">发音说明</div>
-      <div class="pronunciation-box">
-        重音在第二音节 <b>TER</b>，读 /tɜː/，类似"特"，嘴型圆并略前突（英式）；首音节 "in-" 轻读为 /ɪn/；结尾 "-prit" 读 /prɪt/，注意结尾 t 在美式口语中常弱化为轻触。整体：in-TER-prit，三音节，中间重。
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">中文词义</div>
-      <div class="meaning">理解；诠释；口译；解读（数据、信号、行为等）</div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">英文例句</div>
-      <div class="example-row">
-        <div class="example-text">
-          <div class="example-en">How you <em>interpret</em> the data will affect the direction of the entire project.</div>
-          <div class="example-zh">你如何解读这些数据，将会影响整个项目的走向。</div>
-        </div>
-        <button class="speak-btn" onclick="speak('How you interpret the data will affect the direction of the entire project.')" title="朗读例句">🔊</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">记忆提示</div>
-      <div class="tip-box">词根 <b>inter-</b>（之间）+ <b>pret</b>（解释/评价）→ 在两种事物之间做出解释 → 口译 / 诠释。名词 interpreter = 口译员，常出现在国际会议场景。</div>
-    </div>
-  </div>
-
-  <!-- 5. credible -->
-  <div class="card">
-    <div class="card-num">05</div>
-    <div class="word-row">
-      <span class="word">credible</span>
-      <span class="pos">adj. 形容词</span>
-      <button class="speak-btn" onclick="speak('credible')" title="朗读单词">🔊</button>
-    </div>
-    <div class="ipa">/ˈkred.ɪ.bəl/</div>
-
-    <div class="section">
-      <div class="section-label">发音说明</div>
-      <div class="pronunciation-box">
-        重音在首音节 <b>CRED</b>，读 /kred/，"cr" 连读，"e" 短促清晰；"-i-" 弱化为 /ɪ/；"-ble" 读 /bəl/，接近"伯了"中的"伯"。注意与 <b>incredible</b>（不可思议）区分——后者加了 "in-" 前缀表否定，且重音后移。
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">中文词义</div>
-      <div class="meaning">可信的；可靠的；（方案/来源/证人）有说服力的</div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">英文例句</div>
-      <div class="example-row">
-        <div class="example-text">
-          <div class="example-en">To be <em>credible</em> in a presentation, always back up your claims with data.</div>
-          <div class="example-zh">要让演讲有说服力，务必用数据支撑你的观点。</div>
-        </div>
-        <button class="speak-btn" onclick="speak('To be credible in a presentation, always back up your claims with data.')" title="朗读例句">🔊</button>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-label">记忆提示</div>
-      <div class="tip-box">词根 <b>cred</b> = 相信（credit 信用、credential 证书都含此根）。credible = 值得被相信的 → 可信的。反义词 incredible = 不可思议（居然能让人相信！）</div>
-    </div>
-  </div>
-
-</div>
-
-<footer>
-  <p>🌐 每日一刷，积累实用英语词汇 · Powered by WorkBuddy Automation</p>
-  <p style="margin-top:6px;">© 2026 Daily Words · <a href="https://no8excuse.github.io/daily-words/" style="color:#475569;">查看完整存档</a></p>
-</footer>
-
-<script>
-  function speak(text, rate = 0.9) {
-    if (!window.speechSynthesis) {
-      alert('您的浏览器不支持语音播放');
-      return;
+  <script>
+    function speak(text) {
+      if (!window.speechSynthesis) {
+        alert('您的浏览器不支持语音合成，请使用 Chrome 或 Edge。');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      utter.rate = 0.88;
+      utter.pitch = 1;
+      window.speechSynthesis.speak(utter);
     }
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'en-US';
-    u.rate = rate;
-    u.pitch = 1;
-    // 优先选择英语声音
-    const voices = window.speechSynthesis.getVoices();
-    const enVoice = voices.find(v => v.lang.startsWith('en') && !v.name.includes('Google'));
-    if (enVoice) u.voice = enVoice;
-    window.speechSynthesis.speak(u);
-  }
-  // 预加载声音列表
-  window.speechSynthesis.onvoiceschanged = function() {
-    window.speechSynthesis.getVoices();
-  };
-</script>
-
+  </script>
 </body>
 </html>
