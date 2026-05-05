@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>每日英语单词 — 第16期</title>
+  <title>每日英语单词 · 第17期</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background: #0f1117;
       color: #e2e8f0;
@@ -13,325 +14,330 @@
       min-height: 100vh;
       padding: 32px 16px 60px;
     }
+
     header {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
+
     header h1 {
       font-size: 2rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      background: linear-gradient(135deg, #63b3ed, #9f7aea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 6px;
+      background-clip: text;
+      margin-bottom: 8px;
     }
+
     header p {
-      color: #94a3b8;
+      color: #718096;
       font-size: 0.95rem;
     }
-    .cards {
-      max-width: 780px;
+
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
     }
+
     .card {
-      background: #1e2230;
-      border: 1px solid #2d3348;
+      background: #1a1d2e;
+      border: 1px solid #2d3748;
       border-radius: 16px;
-      padding: 28px 30px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-      transition: transform 0.15s;
+      padding: 28px 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .card:hover { transform: translateY(-2px); }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(99,179,237,0.12);
+    }
+
     .card-header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-    .word-num {
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      color: #fff;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-    }
-    .word-main {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: #f1f5f9;
-      letter-spacing: 0.5px;
-    }
-    .word-pos {
-      font-size: 0.82rem;
-      color: #94a3b8;
-      background: #2d3348;
-      padding: 2px 10px;
-      border-radius: 12px;
-    }
-    .speak-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.35rem;
-      padding: 2px 6px;
-      border-radius: 8px;
-      transition: background 0.15s;
-      line-height: 1;
-    }
-    .speak-btn:hover { background: #2d3348; }
-    .ipa {
-      font-size: 1.05rem;
-      color: #7dd3fc;
-      font-family: 'Courier New', monospace;
+      justify-content: space-between;
       margin-bottom: 6px;
     }
-    .section-label {
-      font-size: 0.78rem;
-      color: #64748b;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 14px 0 5px;
-      font-weight: 600;
+
+    .word-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #63b3ed;
     }
-    .pronun-tip {
-      font-size: 0.93rem;
-      color: #fbbf24;
-      background: rgba(251,191,36,0.08);
-      border-left: 3px solid #fbbf24;
-      padding: 8px 14px;
-      border-radius: 0 8px 8px 0;
+
+    .speak-btn {
+      background: none;
+      border: 1px solid #4a5568;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: #a0aec0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+
+    .speak-btn:hover {
+      background: #2d3748;
+      color: #63b3ed;
+      border-color: #63b3ed;
+    }
+
+    .pos {
+      display: inline-block;
+      background: #2d3748;
+      color: #9f7aea;
+      font-size: 0.75rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .ipa {
+      font-size: 1rem;
+      color: #f6e05e;
+      font-family: 'Lucida Sans Unicode', serif;
+      margin-bottom: 6px;
+    }
+
+    .pronunciation {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-bottom: 14px;
       line-height: 1.6;
     }
+
     .meaning {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #e2e8f0;
       font-weight: 600;
+      margin-bottom: 16px;
     }
+
+    .section-label {
+      font-size: 0.72rem;
+      color: #4a5568;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      margin-top: 14px;
+    }
+
     .example-block {
-      background: #151824;
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin-top: 6px;
+      background: #111827;
+      border-left: 3px solid #9f7aea;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 12px;
+      margin-bottom: 6px;
     }
+
     .example-en {
       display: flex;
       align-items: flex-start;
       gap: 8px;
     }
+
     .example-en span {
-      font-size: 0.97rem;
-      color: #bae6fd;
-      line-height: 1.7;
-      font-style: italic;
+      font-size: 0.93rem;
+      color: #cbd5e0;
+      line-height: 1.6;
+      flex: 1;
     }
-    .example-cn {
-      font-size: 0.9rem;
-      color: #94a3b8;
-      margin-top: 6px;
+
+    .example-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #718096;
+      padding: 2px 4px;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+
+    .example-btn:hover { color: #9f7aea; }
+
+    .example-zh {
+      font-size: 0.82rem;
+      color: #718096;
+      margin-top: 4px;
       padding-left: 2px;
     }
-    .tip-block {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: rgba(167,139,250,0.08);
-      border-left: 3px solid #a78bfa;
-      border-radius: 0 8px 8px 0;
+
+    .tip {
+      background: #1e2a1e;
+      border: 1px solid #276749;
+      border-radius: 8px;
       padding: 10px 14px;
-      margin-top: 6px;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #9ae6b4;
+      line-height: 1.6;
     }
-    .tip-icon { font-size: 1.1rem; }
-    .tip-text { font-size: 0.9rem; color: #c4b5fd; line-height: 1.65; }
+
+    .tip::before {
+      content: '💡 ';
+    }
+
     footer {
       text-align: center;
-      margin-top: 50px;
-      color: #475569;
-      font-size: 0.85rem;
+      margin-top: 52px;
+      color: #4a5568;
+      font-size: 0.82rem;
     }
-    footer a { color: #60a5fa; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+
+    footer a {
+      color: #63b3ed;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>📚 每日英语单词</h1>
-    <p>第 16 期 &nbsp;·&nbsp; 2026-05-02 &nbsp;·&nbsp; 生活 &amp; 职场常用词汇</p>
-  </header>
 
-  <div class="cards">
+<header>
+  <h1>每日英语单词</h1>
+  <p>第17期 · 2026年5月6日 · 生活 &amp; 职场常用词汇</p>
+</header>
 
-    <!-- 1. determine -->
-    <div class="card">
-      <div class="card-header">
-        <span class="word-num">01</span>
-        <span class="word-main">determine</span>
-        <span class="word-pos">v. 动词</span>
-        <button class="speak-btn" onclick="speak('determine')" title="朗读单词">🔊</button>
-      </div>
-      <div class="ipa">/ dɪˈtɜːrmɪn /</div>
-      <div class="section-label">发音说明</div>
-      <div class="pronun-tip">重音在第二音节 <strong>-TER-</strong>，读作"迪·特儿·敏"。<em>de-</em> 轻读 /dɪ/（类比"迪"）；<em>-ter-</em> 重读 /tɜːr/（类比"特儿"，美音带儿化）；<em>-mine</em> 轻读 /mɪn/（类比"敏"，不要读成 /maɪn/ "矿"）。尾音 <em>-mine</em> 容易被误读成 mine（我的），注意它在非重音位元音弱化。</div>
-      <div class="section-label">中文词义</div>
-      <div class="meaning">决定；确定；查明；下定决心</div>
-      <div class="section-label">英文例句</div>
-      <div class="example-block">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('The results of the interview will determine whether you get the job offer.')" title="朗读例句">🔊</button>
-          <span>The results of the interview will determine whether you get the job offer.</span>
-        </div>
-        <div class="example-cn">面试结果将决定你是否能获得这份工作。</div>
-      </div>
-      <div class="section-label">记忆提示</div>
-      <div class="tip-block">
-        <span class="tip-icon">💡</span>
-        <span class="tip-text">词根：<strong>de（完全）+ termine（边界，如 terminal 终点）</strong> → "把边界划清楚" → 确定、决定。形容词形式 <strong>determined</strong> 更常用：<em>"She is determined to succeed."</em>（她下定决心要成功）。职场中 a determined attitude（坚定的态度）是高度正面的评价。</span>
-      </div>
+<div class="word-grid">
+
+  <!-- 1. anticipate -->
+  <div class="card">
+    <div class="card-header">
+      <span class="word-title">anticipate</span>
+      <button class="speak-btn" onclick="speak('anticipate')" title="朗读单词">🔊</button>
     </div>
-
-    <!-- 2. acknowledge -->
-    <!-- 注：acknowledge 已在第1期出现，此处替换为 accountable -->
-
-    <!-- 2. accountable -->
-    <div class="card">
-      <div class="card-header">
-        <span class="word-num">02</span>
-        <span class="word-main">accountable</span>
-        <span class="word-pos">adj. 形容词</span>
-        <button class="speak-btn" onclick="speak('accountable')" title="朗读单词">🔊</button>
+    <span class="pos">v. 动词</span>
+    <div class="ipa">/ ænˈtɪs.ɪ.peɪt /</div>
+    <div class="pronunciation">重音在第二音节 <strong>TIS</strong>。"-ci-" 读 /sɪ/，不要读成 "ci"（西）；结尾 "-pate" 读 /peɪt/，类似中文"配特"。</div>
+    <div class="meaning">预期；预料；期待</div>
+    <div class="section-label">例句</div>
+    <div class="example-block">
+      <div class="example-en">
+        <span>We <em>anticipate</em> strong demand for the new product launch next quarter.</span>
+        <button class="example-btn" onclick="speak('We anticipate strong demand for the new product launch next quarter.')" title="朗读例句">🔊</button>
       </div>
-      <div class="ipa">/ əˈkaʊntəbl /</div>
-      <div class="section-label">发音说明</div>
-      <div class="pronun-tip">重音在第二音节 <strong>-COUNT-</strong>，读作"阿·康特·布尔"。<em>ac-</em> 轻读 /ə/；<em>-count-</em> 重读 /kaʊnt/（类比"康特"，ou 发 /aʊ/，类似"澳"的感觉）；<em>-a-ble</em> 轻读 /əbl/（类比"布尔"）。注意 ou 发双元音 /aʊ/，不要读成单元音 /ɔː/（"康"的长音）。</div>
-      <div class="section-label">中文词义</div>
-      <div class="meaning">负责任的；需承担责任的；可追责的</div>
-      <div class="section-label">英文例句</div>
-      <div class="example-block">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('Every team member is accountable for their own tasks and must report any issues promptly.')" title="朗读例句">🔊</button>
-          <span>Every team member is accountable for their own tasks and must report any issues promptly.</span>
-        </div>
-        <div class="example-cn">每位团队成员对自己的任务负责，必须及时汇报任何问题。</div>
-      </div>
-      <div class="section-label">记忆提示</div>
-      <div class="tip-block">
-        <span class="tip-icon">💡</span>
-        <span class="tip-text">词根：<strong>account（账目、解释）+ -able（能够）</strong> → "能够被算账的" → 需承担责任的。职场核心词汇，常出现在 OKR / 绩效文化中：<strong>hold someone accountable（追责某人）</strong>、<strong>be accountable to the team（对团队负责）</strong>。记住：accountable 强调"有义务解释或承担后果"，比 responsible 更正式、更强调外部审查。</span>
-      </div>
+      <div class="example-zh">我们预计新产品下季度上市时需求会很旺盛。</div>
     </div>
-
-    <!-- 3. sustainable -->
-    <div class="card">
-      <div class="card-header">
-        <span class="word-num">03</span>
-        <span class="word-main">sustainable</span>
-        <span class="word-pos">adj. 形容词</span>
-        <button class="speak-btn" onclick="speak('sustainable')" title="朗读单词">🔊</button>
-      </div>
-      <div class="ipa">/ səˈsteɪnəbl /</div>
-      <div class="section-label">发音说明</div>
-      <div class="pronun-tip">重音在第二音节 <strong>-STAY-</strong>，读作"色·斯泰·纳·布尔"。<em>sus-</em> 轻读 /sə/；<em>-tain-</em> 重读 /steɪn/（类比"斯泰恩"，ai 发长音 /eɪ/）；<em>-a-ble</em> 轻读 /nəbl/。注意整个词共四个音节，<em>sus-</em> 极轻，容易被吞掉，要发出来。</div>
-      <div class="section-label">中文词义</div>
-      <div class="meaning">可持续的；能长期维持的；环保可持续的</div>
-      <div class="section-label">英文例句</div>
-      <div class="example-block">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('We need to find a sustainable solution that works well for both the business and the environment.')" title="朗读例句">🔊</button>
-          <span>We need to find a sustainable solution that works well for both the business and the environment.</span>
-        </div>
-        <div class="example-cn">我们需要找到一个对商业和环境都有利的可持续解决方案。</div>
-      </div>
-      <div class="section-label">记忆提示</div>
-      <div class="tip-block">
-        <span class="tip-icon">💡</span>
-        <span class="tip-text">词根：<strong>sus（从下方支撑，如 support）+ tain（保持，如 maintain、contain）+ -able</strong> → "能一直被支撑维持下去的" → 可持续的。当今最热门的商业和环保词汇：<strong>sustainable development（可持续发展）</strong>、<strong>sustainable growth（可持续增长）</strong>。工作汇报中说 "We need a sustainable approach" 显得思路成熟。</span>
-      </div>
-    </div>
-
-    <!-- 4. relevant -->
-    <div class="card">
-      <div class="card-header">
-        <span class="word-num">04</span>
-        <span class="word-main">relevant</span>
-        <span class="word-pos">adj. 形容词</span>
-        <button class="speak-btn" onclick="speak('relevant')" title="朗读单词">🔊</button>
-      </div>
-      <div class="ipa">/ ˈreləvənt /</div>
-      <div class="section-label">发音说明</div>
-      <div class="pronun-tip">重音在第一音节 <strong>REL-</strong>，读作"热勒·旺特"。<em>rel-</em> 重读 /rel/（类比"热勒"，e 发短音 /e/）；<em>-e-</em> 轻读 /ə/（极弱，几乎是"旺"前的一个模糊音）；<em>-vant</em> 轻读 /vənt/（类比"旺特"）。三个音节，中间的 -e- 弱化，整体节奏为：重-弱-弱。切忌读成四音节"rel-e-vant"把中间 e 单独拖长。</div>
-      <div class="section-label">中文词义</div>
-      <div class="meaning">相关的；切题的；有实际意义的</div>
-      <div class="section-label">英文例句</div>
-      <div class="example-block">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('Please only include information that is directly relevant to the project in your report.')" title="朗读例句">🔊</button>
-          <span>Please only include information that is directly relevant to the project in your report.</span>
-        </div>
-        <div class="example-cn">请在报告中只包含与项目直接相关的信息。</div>
-      </div>
-      <div class="section-label">记忆提示</div>
-      <div class="tip-block">
-        <span class="tip-icon">💡</span>
-        <span class="tip-text">词根：<strong>re（再次）+ lev（举起，如 elevate 提升）+ -ant</strong> → "能被再次提起讨论的" → 相关的、有意义的。反义词 <strong>irrelevant</strong>（无关的）也很常用：<em>"That point is irrelevant to our discussion."</em> 职场写邮件时用 relevant 精准替换"有关的"，会让表达更地道。</span>
-      </div>
-    </div>
-
-    <!-- 5. acknowledge -->
-    <!-- 注：此处用 commitment 替代，acknowledge 已在第1期 -->
-
-    <!-- 5. commitment -->
-    <div class="card">
-      <div class="card-header">
-        <span class="word-num">05</span>
-        <span class="word-main">commitment</span>
-        <span class="word-pos">n. 名词</span>
-        <button class="speak-btn" onclick="speak('commitment')" title="朗读单词">🔊</button>
-      </div>
-      <div class="ipa">/ kəˈmɪtmənt /</div>
-      <div class="section-label">发音说明</div>
-      <div class="pronun-tip">重音在第二音节 <strong>-MIT-</strong>，读作"可·咪特·门特"。<em>com-</em> 轻读 /kə/（类比"可"，元音弱化）；<em>-mit-</em> 重读 /mɪt/（类比"咪特"，i 发短音 /ɪ/）；<em>-ment</em> 轻读 /mənt/（类比"门特"）。注意 <em>com-</em> 弱读，不要发成"康"；整体是三音节，不要拖成四音节。</div>
-      <div class="section-label">中文词义</div>
-      <div class="meaning">承诺；投入；奉献；（对某事的）坚定态度</div>
-      <div class="section-label">英文例句</div>
-      <div class="example-block">
-        <div class="example-en">
-          <button class="speak-btn" onclick="speak('Her commitment to quality work impressed everyone on the team.')" title="朗读例句">🔊</button>
-          <span>Her commitment to quality work impressed everyone on the team.</span>
-        </div>
-        <div class="example-cn">她对高质量工作的投入让团队里每个人都印象深刻。</div>
-      </div>
-      <div class="section-label">记忆提示</div>
-      <div class="tip-block">
-        <span class="tip-icon">💡</span>
-        <span class="tip-text">词根：<strong>com（共同、完全）+ mit（送出、托付，如 submit 提交）+ -ment</strong> → "完全把自己托付出去" → 承诺、投入。高频搭配：<strong>make a commitment（做出承诺）</strong>、<strong>show commitment（展现投入）</strong>、<strong>commitment to excellence（对卓越的追求）</strong>。在面试中说 "I have a strong commitment to continuous learning" 会给人留下深刻印象。</span>
-      </div>
-    </div>
-
+    <div class="tip">词根拆解：<strong>anti-</strong>（在…之前）+ <strong>-cip-</strong>（抓取，来自拉丁 capere）+ <strong>-ate</strong>。在事情发生"之前就抓住"，即"预料到"。职场常说 "anticipate challenges" 表示预判挑战。</div>
   </div>
 
-  <footer>
-    <p>每日更新 &nbsp;|&nbsp; <a href="https://no8excuse.github.io/daily-words/" target="_blank">在线查看历史期数 →</a></p>
-    <p style="margin-top:8px;">Powered by WorkBuddy &nbsp;🤖</p>
-  </footer>
+  <!-- 2. boundaries -->
+  <div class="card">
+    <div class="card-header">
+      <span class="word-title">boundaries</span>
+      <button class="speak-btn" onclick="speak('boundaries')" title="朗读单词">🔊</button>
+    </div>
+    <span class="pos">n. 名词（复数）</span>
+    <div class="ipa">/ ˈbaʊn.dər.iz /</div>
+    <div class="pronunciation">重音在第一音节 <strong>BOUN</strong>，读 /baʊn/，类似中文"奔"加上"嗯"。注意中间的 /d/ 要清晰，结尾 /-riz/ 轻读。</div>
+    <div class="meaning">界限；边界；（个人）边界感</div>
+    <div class="section-label">例句</div>
+    <div class="example-block">
+      <div class="example-en">
+        <span>It's important to set healthy <em>boundaries</em> between work and personal life.</span>
+        <button class="example-btn" onclick="speak('It\'s important to set healthy boundaries between work and personal life.')" title="朗读例句">🔊</button>
+      </div>
+      <div class="example-zh">在工作与私人生活之间建立健康的边界感非常重要。</div>
+    </div>
+    <div class="tip">当代职场高频词！"set boundaries" = 划定界限/保护自己的时间与精力。单数 boundary，复数加 -ies。想象给自己的生活围上一道"边界围栏（boundary fence）"，谁想越界都要经过你的同意。</div>
+  </div>
 
-  <script>
-    function speak(text) {
-      if (!window.speechSynthesis) {
-        alert('您的浏览器不支持语音合成，请使用 Chrome 或 Edge。');
-        return;
-      }
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = 'en-US';
-      utter.rate = 0.88;
-      utter.pitch = 1;
-      window.speechSynthesis.speak(utter);
+  <!-- 3. transition -->
+  <div class="card">
+    <div class="card-header">
+      <span class="word-title">transition</span>
+      <button class="speak-btn" onclick="speak('transition')" title="朗读单词">🔊</button>
+    </div>
+    <span class="pos">n. / v. 名词 / 动词</span>
+    <div class="ipa">/ trænˈzɪʃ.ən /</div>
+    <div class="pronunciation">重音在第二音节 <strong>ZI</strong>。"trans-" 读 /træns/，"-sition" 读 /ˈzɪʃ.ən/——注意 "-si-" 在这里发 /ʒ/ 音（类似"日"的声母），而非 /s/。</div>
+    <div class="meaning">过渡；转变；转型</div>
+    <div class="section-label">例句</div>
+    <div class="example-block">
+      <div class="example-en">
+        <span>The company is going through a major <em>transition</em> after the merger.</span>
+        <button class="example-btn" onclick="speak('The company is going through a major transition after the merger.')" title="朗读例句">🔊</button>
+      </div>
+      <div class="example-zh">并购之后，公司正在经历重大转型。</div>
+    </div>
+    <div class="tip">词根：<strong>trans-</strong>（跨越）+ <strong>-it-</strong>（走）= 从一个状态"走到"另一个状态。职场常见搭配：career transition（职业转型），smooth transition（平稳过渡）。</div>
+  </div>
+
+  <!-- 4. clarify -->
+  <div class="card">
+    <div class="card-header">
+      <span class="word-title">leverage</span>
+      <button class="speak-btn" onclick="speak('leverage')" title="朗读单词">🔊</button>
+    </div>
+    <span class="pos">n. / v. 名词 / 动词</span>
+    <div class="ipa">/ ˈlev.ər.ɪdʒ /</div>
+    <div class="pronunciation">重音在第一音节 <strong>LEV</strong>，读 /lev/，像中文"来夫"。"-erage" 读 /ərɪdʒ/，轻而短。整个词三个音节，语速快时末尾常缩成两个音节 /ˈlevr.ɪdʒ/。</div>
+    <div class="meaning">杠杆；优势；充分利用（资源/优势）</div>
+    <div class="section-label">例句</div>
+    <div class="example-block">
+      <div class="example-en">
+        <span>We can <em>leverage</em> our existing client base to expand into new markets.</span>
+        <button class="example-btn" onclick="speak('We can leverage our existing client base to expand into new markets.')" title="朗读例句">🔊</button>
+      </div>
+      <div class="example-zh">我们可以利用现有客户群拓展新市场。</div>
+    </div>
+    <div class="tip">商业文章和会议中超高频！用作动词时意为"充分利用/发挥杠杆作用"，比 use 更有力量感。记忆法：lever（杠杆）+ age → 用杠杆撬动一个时代。遇到"借助X实现Y"，直接用 leverage X to achieve Y。</div>
+  </div>
+
+  <!-- 5. proactive -->
+  <div class="card">
+    <div class="card-header">
+      <span class="word-title">proactive</span>
+      <button class="speak-btn" onclick="speak('proactive')" title="朗读单词">🔊</button>
+    </div>
+    <span class="pos">adj. 形容词</span>
+    <div class="ipa">/ ˌproʊˈæk.tɪv /</div>
+    <div class="pronunciation">重音在第二音节 <strong>AK</strong>。"pro-" 读 /proʊ/（类似"破欧"），"-active" 读 /ˈæk.tɪv/，/æ/ 是嘴巴大开的短促音，类似"啊"和"爱"之间。</div>
+    <div class="meaning">主动的；积极预防的；有前瞻性的</div>
+    <div class="section-label">例句</div>
+    <div class="example-block">
+      <div class="example-en">
+        <span>Being <em>proactive</em> about communication can prevent a lot of misunderstandings in the team.</span>
+        <button class="example-btn" onclick="speak('Being proactive about communication can prevent a lot of misunderstandings in the team.')" title="朗读例句">🔊</button>
+      </div>
+      <div class="example-zh">在沟通上保持主动，能避免团队中很多误解。</div>
+    </div>
+    <div class="tip">对比记忆：<strong>reactive</strong>（被动反应）vs. <strong>proactive</strong>（提前主动）。前缀 <strong>pro-</strong> = 在前面，先于。职场评语里最受青睐的词之一："She's very proactive." 意味着不用催、自驱力强。</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>每日英语单词 · 第17期 · 2026年5月6日</p>
+  <p style="margin-top:6px;">
+    <a href="https://no8excuse.github.io/daily-words/" target="_blank">🔗 在线查看历史单词</a>
+  </p>
+</footer>
+
+<script>
+  function speak(text, lang) {
+    if (!window.speechSynthesis) {
+      alert('您的浏览器不支持语音播放');
+      return;
     }
-  </script>
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = lang || 'en-US';
+    utter.rate = 0.9;
+    utter.pitch = 1;
+    window.speechSynthesis.speak(utter);
+  }
+</script>
+
 </body>
 </html>
